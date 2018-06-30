@@ -47,14 +47,12 @@ public class TimelineRecyclerViewAdapter extends RecyclerView.Adapter<TimelineRe
   public class ViewHolder extends RecyclerView.ViewHolder {
     TextView textView_contents;
     TextView textView_isRead;
-    TextView textView_time;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
 
       textView_contents = itemView.findViewById(R.id.textView_contents);
       textView_isRead = itemView.findViewById(R.id.textView_isRead);
-      textView_time = itemView.findViewById(R.id.textView_time);
     }
   }
 }
