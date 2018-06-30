@@ -16,8 +16,7 @@ public class WriteActivity extends AppCompatActivity implements WriteContract.Vi
     setContentView(R.layout.activity_write);
 
     loadDependencies();
-
-    initView();
+    presenter.init();
   }
 
   private void loadDependencies() {
