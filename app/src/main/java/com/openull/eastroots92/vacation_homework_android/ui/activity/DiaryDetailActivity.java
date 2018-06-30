@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.openull.eastroots92.vacation_homework_android.R;
 import com.openull.eastroots92.vacation_homework_android.models.Diary;
@@ -19,7 +20,14 @@ import butterknife.ButterKnife;
 
 public class DiaryDetailActivity extends AppCompatActivity implements DiaryDetailContract.View {
 
-  DiaryDetailPresentor presentor;
+  @BindView(R.id.textView_name)
+  TextView name;
+
+  @BindView(R.id.textView_date)
+  TextView date;
+
+  @BindView(R.id.textView_weather)
+  TextView weather;
 
   @BindView(R.id.recyclerView_diary)
   RecyclerView recyclerView;
@@ -43,6 +51,16 @@ public class DiaryDetailActivity extends AppCompatActivity implements DiaryDetai
     diaryAdapter = new DiaryAdapter(getApplicationContext(), diaries);
     recyclerView.setAdapter(diaryAdapter);
 
+    initHeader();
+  }
+
+  private void initHeader() {
+    Diary currentDiary = diaries.get(0);
+
+    name.setText(currentDiary.getUsername());
+    date.setText(currentDiary.getDate());
+    weather.setText(currentDiary.getWeather());
+
   }
 
   private void setDummyData() {
@@ -50,7 +68,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements DiaryDetai
       Diary diary = new Diary();
       diary.setUsername("이동근");
       diary.setDate("2018/06/30");
-      diary.setWeather("비옴");
+      diary.setWeather("비온다");
       diary.setQuestion("질문 " + num);
       diary.setAnswer("대답" + num);
 
