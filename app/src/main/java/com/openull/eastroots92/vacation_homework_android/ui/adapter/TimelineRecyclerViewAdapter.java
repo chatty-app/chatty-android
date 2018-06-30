@@ -28,7 +28,7 @@ public class TimelineRecyclerViewAdapter extends RecyclerView.Adapter<TimelineRe
   @Override
   public TimelineRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext())
-      .inflate(R.layout.chat_entry_base, parent, false);
+      .inflate(R.layout.timeline_entry, parent, false);
 
     return new TimelineRecyclerViewAdapter.ViewHolder(view);
   }
@@ -50,9 +50,10 @@ public class TimelineRecyclerViewAdapter extends RecyclerView.Adapter<TimelineRe
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
+      System.out.println("baba");
 
-      textView_contents = itemView.findViewById(R.id.textView_contents);
-      textView_isRead = itemView.findViewById(R.id.textView_isRead);
+//      textView_contents = itemView.findViewById(R.id.textView_contents);
+//      textView_isRead = itemView.findViewById(R.id.textView_isRead);
     }
   }
 }
