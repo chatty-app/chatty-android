@@ -7,14 +7,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.widget.FrameLayout;
 
 import com.openull.eastroots92.vacation_homework_android.R;
 import com.openull.eastroots92.vacation_homework_android.presenter.main.MainContract;
 import com.openull.eastroots92.vacation_homework_android.ui.adapter.MainFragmentAdapter;
-import com.openull.eastroots92.vacation_homework_android.ui.adapter.UserInfoAdapter;
 import com.openull.eastroots92.vacation_homework_android.ui.fragments.CalendarFragment;
 import com.openull.eastroots92.vacation_homework_android.ui.fragments.SettingFragment;
 import com.openull.eastroots92.vacation_homework_android.ui.fragments.TimelineFragment;
@@ -67,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
   }
 
   private void initViewPager() {
-
     Fragment[] fragments = new Fragment[3];
     fragments[0] = timelineFragment;
     fragments[1] = calendarFragment;
