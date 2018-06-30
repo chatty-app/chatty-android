@@ -11,17 +11,21 @@ import android.view.ViewGroup;
 import com.openull.eastroots92.vacation_homework_android.R;
 
 public class CalendarFragment extends Fragment {
-
   @Nullable
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+  public View onCreateView(
+    @NonNull LayoutInflater inflater,
+    @Nullable ViewGroup container,
+    @Nullable Bundle savedInstanceState
+  ) {
     return inflater.inflate(R.layout.fragment_calendar, container, false);
   }
 
   @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+  public void onViewCreated(
+    @NonNull View view,
+    @Nullable Bundle savedInstanceState
+  ) {
     super.onViewCreated(view, savedInstanceState);
-
-    // Code
   }
 }
