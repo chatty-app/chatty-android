@@ -1,8 +1,14 @@
 package com.openull.eastroots92.vacation_homework_android.presenter.main;
 
-public class MainPresenter implements MainContract.Presenter {
-    MainContract.View view;
-    @Override
+import com.openull.eastroots92.vacation_homework_android.ui.activity.MainActivity;
+
+public class MainPresenter {
+    private MainActivity view;
+
+    public MainPresenter(MainActivity view) {
+        this.view = view;
+    }
+
     public void init() {
         view.initView();
     }

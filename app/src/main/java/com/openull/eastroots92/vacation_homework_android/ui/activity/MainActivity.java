@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.openull.eastroots92.vacation_homework_android.R;
-import com.openull.eastroots92.vacation_homework_android.presenter.main.MainContract;
+import com.openull.eastroots92.vacation_homework_android.presenter.main.MainPresenter;
 import com.openull.eastroots92.vacation_homework_android.ui.adapter.MainFragmentAdapter;
 import com.openull.eastroots92.vacation_homework_android.ui.fragments.CalendarFragment;
 import com.openull.eastroots92.vacation_homework_android.ui.fragments.SettingFragment;
@@ -18,8 +18,8 @@ import com.openull.eastroots92.vacation_homework_android.ui.fragments.TimelineFr
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View {
-
+public class MainActivity extends AppCompatActivity {
+  private MainPresenter presenter;
   private CalendarFragment calendarFragment;
   private SettingFragment settingFragment;
   private TimelineFragment timelineFragment;
@@ -40,12 +40,16 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    ButterKnife.bind(this);
 
-    initView();
+    loadDependencies();
+    presenter.init();
   }
 
-  @Override
+  private void loadDependencies() {
+    presenter = new MainPresenter(this);
+    ButterKnife.bind(this);
+  }
+
   public void initView() {
     calendarFragment = new CalendarFragment();
     settingFragment = new SettingFragment();

@@ -18,12 +18,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WritePresenter implements WriteContract.Presenter {
+public class WritePresenter {
   final String FALSE= "FALSE";
   final String IS_INITIALIZED = "IS_INITIALIZED";
   final String TRUE = "TRUE";
 
-  WriteActivity view;
+  private WriteActivity view;
   HomeworkApis homeworkApis;
   Map<String, String> state;
 
@@ -33,10 +33,9 @@ public class WritePresenter implements WriteContract.Presenter {
     this.state.put(IS_INITIALIZED, FALSE);
   }
 
-  @Override
   public void init() {
     homeworkApis = ApiUtils.getHomeworkApis();
-    this.view.initView();
+    view.initView();
     dispatchInitChat();
   }
 

@@ -9,8 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.openull.eastroots92.vacation_homework_android.R;
+import com.openull.eastroots92.vacation_homework_android.presenter.settingFragment.SettingPresenter;
+
+import butterknife.ButterKnife;
 
 public class SettingFragment extends Fragment {
+  private SettingPresenter presenter;
+
   @Nullable
   @Override
   public View onCreateView(
@@ -18,14 +23,14 @@ public class SettingFragment extends Fragment {
     @Nullable ViewGroup container,
     @Nullable Bundle savedInstanceState
   ) {
-    return inflater.inflate(R.layout.fragment_setting, container, false);
+    View view = inflater.inflate(R.layout.fragment_setting, container, false);
+    loadDependencies(view);
+    return view;
   }
 
-  @Override
-  public void onViewCreated(
-    @NonNull View view,
-    @Nullable Bundle savedInstanceState
-  ) {
-    super.onViewCreated(view, savedInstanceState);
+  private void loadDependencies(View view) {
+    presenter = new SettingPresenter(this);
+    ButterKnife.bind(this, view);
   }
+
 }

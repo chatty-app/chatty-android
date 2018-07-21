@@ -9,7 +9,6 @@ import android.widget.EditText;
 
 import com.openull.eastroots92.vacation_homework_android.R;
 import com.openull.eastroots92.vacation_homework_android.models.ChatBalloon;
-import com.openull.eastroots92.vacation_homework_android.presenter.write.WriteContract;
 import com.openull.eastroots92.vacation_homework_android.presenter.write.WritePresenter;
 import com.openull.eastroots92.vacation_homework_android.ui.adapter.DialogueAdapter;
 
@@ -19,8 +18,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WriteActivity extends AppCompatActivity implements WriteContract.View {
-  WritePresenter presenter;
+public class WriteActivity extends AppCompatActivity{
+  private WritePresenter presenter;
 
   @BindView(R.id.recyclerView_dialogue)
   public RecyclerView recyclerView;
@@ -40,16 +39,15 @@ public class WriteActivity extends AppCompatActivity implements WriteContract.Vi
     setContentView(R.layout.activity_write);
 
     loadDependencies();
-
     presenter.init();
   }
 
   private void loadDependencies() {
     presenter = new WritePresenter(this);
     ButterKnife.bind(this);
+
   }
 
-  @Override
   public void initView() {
     chatBalloons = new ArrayList<>();
 

@@ -4,13 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.TextView;
 
 import com.openull.eastroots92.vacation_homework_android.R;
 import com.openull.eastroots92.vacation_homework_android.models.Diary;
-import com.openull.eastroots92.vacation_homework_android.presenter.detail.DiaryDetailContract;
-import com.openull.eastroots92.vacation_homework_android.presenter.detail.DiaryDetailPresentor;
+import com.openull.eastroots92.vacation_homework_android.presenter.detail.DiaryDetailPresenter;
 import com.openull.eastroots92.vacation_homework_android.ui.adapter.DiaryAdapter;
 
 import java.util.ArrayList;
@@ -19,7 +17,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DiaryDetailActivity extends AppCompatActivity implements DiaryDetailContract.View {
+public class DiaryDetailActivity extends AppCompatActivity {
+  private DiaryDetailPresenter presenter;
   
   @BindView(R.id.textView_name)
   TextView name;
@@ -41,9 +40,16 @@ public class DiaryDetailActivity extends AppCompatActivity implements DiaryDetai
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_diary_detail);
-    ButterKnife.bind(this);
+
+    loadDependencies();
+
 
     initView();
+  }
+
+  private void loadDependencies() {
+    presenter = new DiaryDetailPresenter(this);
+    ButterKnife.bind(this);
   }
 
   public void initView() {
