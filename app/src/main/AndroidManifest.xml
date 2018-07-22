@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.openull.eastroots92.vacation_homework_android">
+  package="com.chatty.android.chattyClient">
 
   <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,15 +11,15 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name=".ui.activity.MainActivity">
+    <activity android:name=".view.main.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".ui.activity.WriteActivity"></activity>
-    <activity android:name=".ui.activity.DiaryDetailActivity">
+    <activity android:name=".view.write.WriteActivity"></activity>
+    <activity android:name=".view.diaryDetail.DiaryDetailActivity">
 
     </activity>
   </application>
