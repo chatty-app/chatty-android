@@ -2,8 +2,8 @@ package com.chatty.android.chattyClient.presenter.write;
 
 import android.view.View;
 
+import com.chatty.android.chattyClient.api.ChattyApiDefinition;
 import com.chatty.android.chattyClient.api.ChattyApi;
-import com.chatty.android.chattyClient.api.ChattyApiCore;
 import com.chatty.android.chattyClient.model.ChatBalloon;
 import com.chatty.android.chattyClient.model.request.ChatRequest;
 import com.chatty.android.chattyClient.model.response.ChatResponse;
@@ -23,7 +23,7 @@ public class WritePresenter {
   private static final String TRUE = "TRUE";
 
   private WriteActivity view;
-  private ChattyApi chattyApi;
+  private ChattyApiDefinition chattyApiDefinition;
   private Map<String, String> state;
 
   public WritePresenter(WriteActivity v) {
@@ -33,13 +33,13 @@ public class WritePresenter {
   }
 
   public void init() {
-    chattyApi = ChattyApiCore.getApi();
+    chattyApiDefinition = ChattyApi.getApi();
     view.initView();
     dispatchInitChat();
   }
 
   private void dispatchInitChat() {
-    chattyApi.postInitChat()
+    chattyApiDefinition.postInitChat()
       .enqueue(new Callback<ChatResponse>() {
         @Override
         public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
@@ -63,7 +63,7 @@ public class WritePresenter {
     String _contents = "contents " + contents;
     System.out.println("_contents " + _contents);
 
-    chattyApi.postChat(new ChatRequest(_contents))
+    chattyApiDefinition.postChat(new ChatRequest(_contents))
       .enqueue(new Callback<ChatResponse>() {
         @Override
         public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {

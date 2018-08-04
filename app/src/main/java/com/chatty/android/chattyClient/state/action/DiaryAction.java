@@ -1,7 +1,7 @@
 package com.chatty.android.chattyClient.state.action;
 
+import com.chatty.android.chattyClient.api.ChattyApiDefinition;
 import com.chatty.android.chattyClient.api.ChattyApi;
-import com.chatty.android.chattyClient.api.ChattyApiCore;
 import com.chatty.android.chattyClient.constants.ActionType;
 import com.chatty.android.chattyClient.model.response.ChatResponse;
 import com.chatty.android.chattyClient.module.StateManager.Action;
@@ -15,20 +15,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DiaryAction {
-  private static ChattyApi chattyApi = null;
-
-  private static void initApis() {
-    if (chattyApi == null) {
-      chattyApi = ChattyApiCore.getApi();
-    }
-  }
-
   public static StateManager.DispatcherMiddleware requestGetDiaries() {
-    initApis();
     return (dispatch) -> {
       dispatch.run(new Action(ActionType.REQUEST_GET_DIARIES));
 
-      chattyApi.postInitChat()
+      ChattyApi.getApi().postInitChat()
         .enqueue(new Callback<ChatResponse>() {
           @Override
           public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
