@@ -1,6 +1,5 @@
 package com.chatty.android.chattyClient.view.main;
 
-import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.View;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.presenter.main.MainPresenter;
 import com.chatty.android.chattyClient.presenter.main.MainFragmentAdapter;
-import com.chatty.android.chattyClient.view.calendar.CalendarFragment;
 import com.chatty.android.chattyClient.view.setting.SettingFragment;
 import com.chatty.android.chattyClient.view.timeLine.TimelineFragment;
 
@@ -21,7 +19,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
   private MainPresenter presenter;
-  private CalendarFragment calendarFragment;
   private SettingFragment settingFragment;
   private TimelineFragment timelineFragment;
 
@@ -53,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
   public void render(
     View.OnClickListener handleClickWriteButton
   ) {
-    calendarFragment = new CalendarFragment();
     settingFragment = new SettingFragment();
     timelineFragment = new TimelineFragment();
 
@@ -71,10 +67,9 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void renderViewPager() {
-    Fragment[] fragments = new Fragment[3];
+    Fragment[] fragments = new Fragment[2];
     fragments[0] = timelineFragment;
-    fragments[1] = calendarFragment;
-    fragments[2] = settingFragment;
+    fragments[1] = settingFragment;
 
     mainFrameLayout.setAdapter(
       new MainFragmentAdapter(getSupportFragmentManager(), fragments)
