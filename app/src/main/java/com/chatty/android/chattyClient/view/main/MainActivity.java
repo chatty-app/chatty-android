@@ -11,7 +11,6 @@ import android.view.View;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.presenter.main.MainPresenter;
 import com.chatty.android.chattyClient.presenter.main.MainFragmentAdapter;
-import com.chatty.android.chattyClient.view.setting.SettingFragment;
 import com.chatty.android.chattyClient.view.timeLine.TimelineFragment;
 
 import butterknife.BindView;
@@ -19,9 +18,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
   private MainPresenter presenter;
-  private SettingFragment settingFragment;
   private TimelineFragment timelineFragment;
-
 
   @BindView(R.id.floatingActionButton_write)
   public FloatingActionButton writeButton;
@@ -31,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
   @BindView(R.id.tabLayout_navBar)
   public TabLayout tabLayout;
-
-  private MainFragmentAdapter mainFragmentAdapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
   public void render(
     View.OnClickListener handleClickWriteButton
   ) {
-    settingFragment = new SettingFragment();
     timelineFragment = new TimelineFragment();
 
     renderGlobalHeader();
@@ -67,9 +61,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void renderViewPager() {
-    Fragment[] fragments = new Fragment[2];
+    Fragment[] fragments = new Fragment[1];
     fragments[0] = timelineFragment;
-    fragments[1] = settingFragment;
 
     mainFrameLayout.setAdapter(
       new MainFragmentAdapter(getSupportFragmentManager(), fragments)
