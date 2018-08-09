@@ -1,33 +1,33 @@
 package com.chatty.android.chattyClient.view.main;
 
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.presenter.main.MainPresenter;
-import com.chatty.android.chattyClient.presenter.main.MainFragmentAdapter;
-import com.chatty.android.chattyClient.view.timeLine.TimelineFragment;
+import com.chatty.android.chattyClient.presenter.main.TimelineRecyclerViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
   private MainPresenter presenter;
-  private TimelineFragment timelineFragment;
 
   @BindView(R.id.floatingActionButton_write)
   public FloatingActionButton writeButton;
 
-  @BindView(R.id.frameLayout_main)
-  public ViewPager mainFrameLayout;
+  @BindView(R.id.recyclerView_timeline)
+  public RecyclerView recyclerView;
+  private RecyclerView.Adapter recyclerViewAdapter;
 
-  @BindView(R.id.tabLayout_navBar)
-  public TabLayout tabLayout;
+  private List<String> timeline;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,34 +42,22 @@ public class MainActivity extends AppCompatActivity {
     presenter.construct();
   }
 
-  public void render(
-    View.OnClickListener handleClickWriteButton
-  ) {
-    timelineFragment = new TimelineFragment();
-
-    renderGlobalHeader();
-    renderViewPager();
-    renderTabLayout();
+  public void render(View.OnClickListener handleClickWriteButton) {
     renderWriteButton(handleClickWriteButton);
+    renderTimeLineView();
   }
 
-  private void renderGlobalHeader() {
+  private void renderTimeLineView() {
+    timeline = new ArrayList<>();
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    recyclerViewAdapter = new TimelineRecyclerViewAdapter(this, timeline);
+    recyclerView.setAdapter(recyclerViewAdapter);
+
+    timeline.add("power");
+    recyclerViewAdapter.notifyItemChanged(this.timeline.size() - 1);
   }
 
   private void renderWriteButton(View.OnClickListener handleClickWriteButton) {
     writeButton.setOnClickListener(handleClickWriteButton);
-  }
-
-  private void renderViewPager() {
-    Fragment[] fragments = new Fragment[1];
-    fragments[0] = timelineFragment;
-
-    mainFrameLayout.setAdapter(
-      new MainFragmentAdapter(getSupportFragmentManager(), fragments)
-    );
-  }
-
-  private void renderTabLayout() {
-    tabLayout.setupWithViewPager(mainFrameLayout);
   }
 }

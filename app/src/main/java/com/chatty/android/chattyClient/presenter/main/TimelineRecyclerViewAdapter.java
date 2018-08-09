@@ -1,4 +1,4 @@
-package com.chatty.android.chattyClient.presenter.timeLine;
+package com.chatty.android.chattyClient.presenter.main;
 
 
 import android.content.Context;
