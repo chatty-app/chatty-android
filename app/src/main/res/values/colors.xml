@@ -15,6 +15,8 @@
   <color name="gray3">#dadada</color>
   <color name="gray4">#e1e1e1</color>
 
+  <color name="Yellow">#fff47f</color>
+
   <color name="item_global_header_background">#3d3636</color>
   <color name="item_timeline_entry_background">#464f64</color>
 

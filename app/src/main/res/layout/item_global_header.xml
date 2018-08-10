@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
   android:background="@color/white5"
-  android:layout_height="@dimen/HEIGHT_56"
+  android:layout_height="@dimen/SIZE_56"
   android:layout_width="match_parent"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -14,6 +14,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.5"/>
+
   <TextView
     android:gravity="center"
     android:id="@+id/textView_timeline_title"

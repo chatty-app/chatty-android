@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-  android:layout_height="@dimen/HEIGHT_56"
+  android:layout_height="@dimen/SIZE_56"
   android:layout_width="match_parent"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
   <ImageButton
+
     android:id="@+id/btn_main_header_setting"
     android:layout_height="@dimen/SIZE_24"
     android:layout_marginStart="@dimen/SIZE_20"
@@ -45,4 +46,5 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/SIZE_3"
     app:layout_constraintBottom_toBottomOf="parent"/>
+    app:srcCompat="@color/main_puple"/>
 </android.support.constraint.ConstraintLayout>

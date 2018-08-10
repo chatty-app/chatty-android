@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="@dimen/HEIGHT_56"
+  android:layout_height="@dimen/SIZE_56"
   android:gravity="center_vertical"
   android:paddingHorizontal="@dimen/item_header_linear_layout_padding_horizontal">
   <ImageView
