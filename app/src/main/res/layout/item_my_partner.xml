@@ -8,6 +8,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
+
   <ImageView
     android:id="@+id/Partner_img"
     android:layout_height="@dimen/SIZE_80"
