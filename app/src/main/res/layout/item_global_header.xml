@@ -16,11 +16,11 @@
     app:layout_constraintVertical_bias="0.5"/>
   <TextView
     android:gravity="center"
+    android:fontFamily="sans-serif"
     android:id="@+id/textView_timeline_title"
     android:layout_centerInParent="true"
     android:layout_height="wrap_content"
-    android:layout_width="0dp"
-    android:text="Write"
+    android:layout_width="@dimen/match_constraint"
     android:textColor="@color/main_purple"
     android:textSize="18sp"
     android:textStyle="bold"
@@ -33,6 +33,7 @@
   <ImageButton
     android:id="@+id/button_timeline_right"
     android:layout_alignParentRight="true"
+    android:background="@color/white5"
     android:layout_height="@dimen/item_global_header_button_timeline_right2_layout_height"
     android:layout_marginEnd="@dimen/SIZE_20"
     android:layout_width="@dimen/item_global_header_button_timeline_right2_layout_width"

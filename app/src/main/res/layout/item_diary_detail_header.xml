@@ -23,13 +23,14 @@
         android:id="@+id/textView_name"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="@string/item_header_textview_name_text"
-        android:textColor="@color/black2"/>
+        android:text="@string/text_name"
+        android:textColor="@color/black2"
+        />
       <TextView
         android:id="@+id/textView_date"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="@string/item_header_textview_date_text"
+        android:text="@string/text_date"
         android:textColor="@color/black2"/>
     </LinearLayout>
     <ImageView
@@ -42,6 +43,6 @@
       android:id="@+id/textView_weather"
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:text="@string/item_header_textview_weather_text"/>
+      android:text="@string/text_weather"/>
   </LinearLayout>
 </android.support.constraint.ConstraintLayout>

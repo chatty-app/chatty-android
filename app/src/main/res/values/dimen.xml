@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <dimen name="match_constraint">0dp</dimen>
   <dimen name="SIZE_2">2dp</dimen>
   <dimen name="SIZE_3">3dp</dimen>
   <dimen name="SIZE_5">5dp</dimen>
@@ -68,5 +69,6 @@
   <dimen name="size_10dp">10dp</dimen>
   <dimen name="size_16dp">16dp</dimen>
   <dimen name="size_19dp">19dp</dimen>
+  <dimen name="text_size_10sp">10sp</dimen>
 
 </resources>
