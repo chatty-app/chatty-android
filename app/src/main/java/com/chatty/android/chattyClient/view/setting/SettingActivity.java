@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.presenter.setting.SettingPresenter;
+import com.chatty.android.chattyClient.view.friendsSetting.FriendsSettingActivity;
 import com.chatty.android.chattyClient.view.main.MainActivity;
 
 import butterknife.BindView;
@@ -80,7 +81,9 @@ public class SettingActivity extends AppCompatActivity {
   }
 
   private void renderFriendsSettingButton() {
-    textViewButtonFriendsSetting.setOnClickListener((__) -> {});
+    textViewButtonFriendsSetting.setOnClickListener((__) -> {
+      startFriendsSettingActivity();
+    });
   }
 
   private void renderAddQuestionButton() {
@@ -113,5 +116,9 @@ public class SettingActivity extends AppCompatActivity {
     alertBuilder.setMessage(SORRY_MESSAGE);
     alertBuilder.setPositiveButton(ALERT_SUBMIT, null);
     alertBuilder.create().show();
+  }
+
+  private void startFriendsSettingActivity() {
+    startActivity(new Intent(this, FriendsSettingActivity.class));
   }
 }
