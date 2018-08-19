@@ -1,5 +1,6 @@
 package com.chatty.android.chattyClient.view.setting;
 
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.presenter.setting.SettingPresenter;
+import com.chatty.android.chattyClient.view.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,7 +54,15 @@ public class SettingActivity extends AppCompatActivity {
 
   public void render() {
     alertBuilder = new AlertDialog.Builder(SettingActivity.this, R.style.AlertDialogStyle);
+    headerRender();
     buttonRender();
+  }
+
+  private void headerRender() {
+    Intent intent = getIntent();
+    String message = intent.getStringExtra(MainActivity.HEADER_TITLE);
+    TextView textView = findViewById(R.id.textView_timeline_title);
+    textView.setText(message);
   }
 
   private void buttonRender() {

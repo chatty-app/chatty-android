@@ -6,4 +6,11 @@
   android:layout_height="match_parent"
   tools:context=".view.friendsSetting.FriendsSettingActivity">
 
+  <include
+    android:id="@+id/header"
+    layout="@layout/item_global_header"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
