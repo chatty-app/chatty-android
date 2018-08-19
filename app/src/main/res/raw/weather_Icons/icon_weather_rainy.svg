@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon_weather_rainy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon_weather_rainy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <g id="Group-11" transform="translate(1.000000, 2.000000)" fill-rule="nonzero">
+                <path d="M17.7375,5.285 C17.1141667,2.26625 14.3366667,0 11,0 C8.35083333,0 6.05,1.435 4.90416667,3.535 C2.145,3.815 0,6.04625 0,8.75 C0,11.64625 2.46583333,14 5.5,14 L17.4166667,14 C19.9466667,14 22,12.04 22,9.625 C22,7.315 20.1208333,5.4425 17.7375,5.285 Z" id="Shape" fill="#B5B5B5"></path>
+                <rect id="Rectangle" fill="#A0D5FA" transform="translate(5.866025, 17.232051) rotate(30.000000) translate(-5.866025, -17.232051) " x="4.8660254" y="15.2320508" width="2" height="4" rx="1"></rect>
+                <rect id="Rectangle-Copy" fill="#A0D5FA" transform="translate(10.866025, 17.232051) rotate(30.000000) translate(-10.866025, -17.232051) " x="9.8660254" y="15.2320508" width="2" height="4" rx="1"></rect>
+                <rect id="Rectangle-Copy-2" fill="#A0D5FA" transform="translate(15.866025, 17.232051) rotate(30.000000) translate(-15.866025, -17.232051) " x="14.8660254" y="15.2320508" width="2" height="4" rx="1"></rect>
+            </g>
+            <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+        </g>
+    </g>
+</svg>

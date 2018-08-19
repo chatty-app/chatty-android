@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon_write</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon_write">
+            <g id="ic-mode-edit-48px">
+                <path d="M5,25.5825809 L5,31 L10.4174191,31 L26.402417,15.0150021 L20.9849979,9.597583 L5,25.5825809 Z M30.5774413,10.8399778 C31.1408529,10.2765662 31.1408529,9.35921656 30.5774413,8.79580497 L27.204195,5.42255869 C26.6407834,4.8591471 25.7234338,4.8591471 25.1600222,5.42255869 L22.5163217,8.0662592 L27.9337408,13.4836783 L30.5774413,10.8399778 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <polygon id="Shape" points="0 0 36 0 36 36 0 36"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

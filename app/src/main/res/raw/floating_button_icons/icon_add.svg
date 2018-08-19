@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon_add</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon_add">
+            <g id="Shape">
+                <path d="M29.1428571,19.8571429 L19.8571429,19.8571429 L19.8571429,29.1428571 C19.8571429,30.1685288 19.0256717,31 18,31 L18,31 C16.9743283,31 16.1428571,30.1685288 16.1428571,29.1428571 L16.1428571,19.8571429 L6.85714286,19.8571429 C5.83147118,19.8571429 5,19.0256717 5,18 L5,18 C5,16.9743283 5.83147118,16.1428571 6.85714286,16.1428571 L16.1428571,16.1428571 L16.1428571,6.85714286 C16.1428571,5.83147118 16.9743283,5 18,5 L18,5 C19.0256717,5 19.8571429,5.83147118 19.8571429,6.85714286 L19.8571429,16.1428571 L29.1428571,16.1428571 C30.1685288,16.1428571 31,16.9743283 31,18 L31,18 C31,19.0256717 30.1685288,19.8571429 29.1428571,19.8571429 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <polygon points="0 0 36 0 36 36 0 36"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

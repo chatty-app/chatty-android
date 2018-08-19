@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon_Setting_Friendslist</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon_Setting_Friendslist" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.4">
+        <g fill-rule="nonzero">
+            <g id="icon-user" transform="translate(3.000000, 2.000000)" fill="#000000">
+                <path d="M0,15 C0,15 1.93,11 9.5,11 C17.07,11 19,15 19,15 L19,18 C19,19.657 17.664,21 16,21 L3,21 C1.343,21 0,19.653 0,18 L0,15 Z M2,18 C2,18.55 2.449,19 3,19 L16,19 C16.556,19 17,18.555 17,18 L17,15.622 C16.759,15.299 16.406,14.963 15.942,14.638 C14.5,13.629 12.41,12.999 9.5,12.999 C6.59,12.999 4.5,13.628 3.058,14.638 C2.594,14.963 2.241,15.299 2,15.622 L2,18 Z M12,4.5 C12,3.119 10.881,2 9.5,2 C8.119,2 7,3.119 7,4.5 L7,5 C7,6.101 7.9,7 9,7 L10,7 C11.106,7 12,6.108 12,5.003 L12,4.5 Z M14,5 C14,7.21 11.953,9 10,9 L9,9 C6.8,9 5,7.209 5,5 L5,4.5 C5,2.015 7.015,0 9.5,0 C11.985,0 14,2.015 14,4.5 L14,5 Z" id="Shape"></path>
+            </g>
+            <rect id="Rectangle-16" x="0" y="0" width="24" height="24"></rect>
+        </g>
+    </g>
+</svg>

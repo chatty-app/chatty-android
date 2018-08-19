@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon_Checkbox_non</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Icon_Checkbox_non" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.4">
+        <g fill-rule="nonzero">
+            <g id="square-check" transform="translate(3.000000, 3.000000)" fill="#000000">
+                <path d="M15.5454545,0 L2.45454545,0 C1.09840909,0 0,1.09840909 0,2.45454545 L0,15.5454545 C0,16.9015909 1.09840909,18 2.45454545,18 L15.5454545,18 C16.9015909,18 18,16.9015909 18,15.5454545 L18,2.45454545 C18,1.09840909 16.9015909,0 15.5454545,0 Z M16,15.2222222 C16,15.6519444 15.6519444,16 15.2222222,16 L2.77777778,16 C2.34825,16 2,15.6519444 2,15.2222222 L2,2.77777778 C2,2.34825 2.34825,2 2.77777778,2 L15.2222222,2 C15.6519444,2 16,2.34825 16,2.77777778 L16,15.2222222 Z" id="Shape"></path>
+            </g>
+            <rect id="Rectangle-25" x="0" y="0" width="24" height="24"></rect>
+        </g>
+    </g>
+</svg>
