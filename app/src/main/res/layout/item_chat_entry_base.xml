@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout
+  android:background="@color/white3"
   android:layout_height="wrap_content"
-  android:orientation="horizontal">
+  android:layout_marginTop="@dimen/SIZE_18"
+  android:layout_width="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
   <ImageView
     android:background="@drawable/layout_circle"
     android:id="@+id/imageView_read_img"
-    android:layout_width="@dimen/item_chat_entry_base_imageview_read_img_layout_width"
-    android:layout_height="@dimen/item_chat_entry_base_imageview_read_img_layout_height"
-    android:layout_marginStart="@dimen/item_chat_entry_base_imageview_read_img_layout_margin_start"
-    android:layout_marginTop="@dimen/item_chat_entry_base_imageview_read_img_layout_margin_top" />
-  <LinearLayout
-    android:layout_width="match_parent"
+    android:layout_height="@dimen/SIZE_40"
+    android:layout_marginStart="@dimen/SIZE_20"
+    android:layout_width="@dimen/SIZE_40"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0" />
+  <TextView
+    android:id="@+id/textView_isRead"
+    android:layout_height="@dimen/size_19dp"
+    android:layout_marginStart="8dp"
+    android:layout_width="wrap_content"
+    android:textColor="@color/black0"
+    android:textSize="@dimen/text_size_14sp"
+    android:textStyle="normal"
+    app:layout_constraintStart_toEndOf="@+id/imageView_read_img"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="Yuyuyu"/>
+
+  <TextView
+    android:background="@drawable/write_question_ninpatch_3x"
+    android:elevation="@dimen/SIZE_2"
+    android:fontFamily="sans-serif-medium"
+    android:gravity="center_vertical"
+    android:id="@+id/textView_contents"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginBottom="@dimen/size_16dp">
-    <TextView
-      android:id="@+id/textView_isRead"
-      android:layout_width="wrap_content"
-      android:layout_height="@dimen/item_chat_entry_base_textview_is_read_img_layout_height"
-      android:layout_marginBottom="@dimen/item_chat_entry_base_textview_is_read_img_layout_margin_bottom"
-      android:layout_marginStart="@dimen/item_chat_entry_base_textview_is_read_img_layout_margin_start"
-      android:layout_marginTop="@dimen/item_chat_entry_base_textview_is_read_img_layout_margin_top"
-      android:text="Yuyuyu"
-      android:textSize="@dimen/text_size_14sp"
-      android:textColor="@color/black0"/>
-    <TextView
-      android:id="@+id/textView_contents"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/item_chat_entry_base_textview_contents_img_layout_margin_start"
-      android:layout_marginEnd="@dimen/item_chat_entry_base_textview_contents_img_layout_margin_end"
-      android:background="@color/white3"
-      android:padding="@dimen/item_chat_entry_base_textview_contents_img_padding"
-      android:text="How are you feeling?"
-      android:textColor="@color/black0"
-      android:textSize="@dimen/item_chat_entry_base_textview_contents_img_test_size"/>
-  </LinearLayout>
-</LinearLayout>
+    android:layout_marginBottom="@dimen/size_8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_width="wrap_content"
+    android:letterSpacing="0.01"
+    android:paddingBottom="@dimen/size_10dp"
+    android:paddingLeft="@dimen/SIZE_13"
+    android:paddingRight="@dimen/SIZE_13"
+    android:paddingTop="@dimen/size_10dp"
+    android:textColor="@color/white3"
+    android:textSize="@dimen/text_size_16sp"
+    android:textStyle="normal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/imageView_read_img"
+    app:layout_constraintTop_toBottomOf="@+id/textView_isRead"
+    tools:text="How are you feeling? "/>
+</android.support.constraint.ConstraintLayout>

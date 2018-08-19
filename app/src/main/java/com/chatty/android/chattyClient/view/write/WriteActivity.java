@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.model.ChatBalloon;
@@ -20,6 +22,10 @@ import butterknife.ButterKnife;
 
 public class WriteActivity extends AppCompatActivity{
   private WritePresenter presenter;
+  private static final String WRITE_TITLE = "Write";
+
+  @BindView(R.id.button_timeline_left)
+  public ImageButton backButton;
 
   @BindView(R.id.recyclerView_dialogue)
   public RecyclerView recyclerView;
@@ -36,18 +42,24 @@ public class WriteActivity extends AppCompatActivity{
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_write);
 
 //    StateManager.dispatch(new Action("yo", null));
+    construct();
+  }
 
+  private void construct() {
+    setContentView(R.layout.activity_write);
     loadDependencies();
     presenter.init();
+    render();
+
+    TextView textView = findViewById(R.id.textView_timeline_title);
+    textView.setText(WRITE_TITLE);
   }
 
   private void loadDependencies() {
     presenter = new WritePresenter(this);
     ButterKnife.bind(this);
-
   }
 
   public void initView() {
@@ -65,6 +77,16 @@ public class WriteActivity extends AppCompatActivity{
     this.dialogueAdapter.notifyItemInserted(this.chatBalloons.size() - 1);
 
     recyclerView.scrollToPosition(this.chatBalloons.size() -1);
+  }
+
+  public void render() {
+    renderBackButton();
+  }
+
+  private void renderBackButton() {
+    backButton.setOnClickListener(view -> {
+      finish();
+    });
   }
 }
 

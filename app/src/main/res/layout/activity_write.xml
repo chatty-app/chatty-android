@@ -1,32 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout
+  android:background="@color/white3"
   android:layout_height="match_parent"
+  android:layout_width="match_parent"
   tools:context=".view.write.WriteActivity"
-  android:orientation="vertical">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+  <include
+    android:id="@+id/item_global_header"
+    android:layout_height="@dimen/SIZE_56"
+    android:layout_width="@dimen/match_constraint"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    layout="@layout/item_global_header"/>
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerView_dialogue"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/activity_write_recyclerview_dialogue_layout_height"
-    android:layout_weight="@dimen/activity_write_recyclerview_dialogue_layout_weight"/>
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_width="@dimen/match_constraint"
+    app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/item_global_header"
+    app:layout_constraintVertical_bias="0.0"/>
+  <android.support.constraint.ConstraintLayout
+    android:background="@color/gray1"
+    android:id="@+id/constraintLayout"
+    android:layout_height="55dp"
+    android:layout_width="@dimen/match_constraint"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+    <ImageButton
+      android:id="@+id/btn_write_plus"
+      android:layout_height="@dimen/SIZE_24"
+      android:layout_marginBottom="@dimen/size_8dp"
+      android:layout_marginStart="@dimen/SIZE_20"
+      android:layout_marginTop="@dimen/size_8dp"
+      android:layout_width="@dimen/SIZE_24"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
     <EditText
+      android:background="@drawable/layout_chatbox"
       android:id="@+id/editText_writeInput"
-      android:background="@color/colorPrimary"
-      android:layout_weight="@dimen/activity_write_editext_writeinput_layout_weight"
-      android:layout_height="match_parent"
-      android:layout_width="@dimen/activity_write_editext_writeinput_layout_width"
-      android:textColor="@color/black2"/>
+      android:layout_height="@dimen/match_constraint"
+      android:layout_marginBottom="@dimen/size_8dp"
+      android:layout_marginEnd="@dimen/SIZE_20"
+      android:layout_marginStart="@dimen/SIZE_12"
+      android:layout_marginTop="@dimen/size_8dp"
+      android:layout_width="@dimen/match_constraint"
+      android:textColor="@color/black2"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/btn_write_plus"
+      app:layout_constraintTop_toTopOf="parent"/>
     <Button
-      android:id="@+id/button_writeSubmit"
       android:background="@color/colorPrimaryDark"
-      android:layout_width="@dimen/activity_write_button_write_submit_layout_width"
-      android:layout_height="match_parent"
+      android:id="@+id/button_writeSubmit"
+      android:layout_height="@dimen/SIZE_24"
+      android:layout_marginBottom="@dimen/SIZE_4"
+      android:layout_marginEnd="@dimen/SIZE_8"
+      android:layout_marginTop="@dimen/SIZE_4"
+      android:layout_width="@dimen/SIZE_24"
       android:text="@string/WRITE_SUBMIT"
-      android:textColor="@color/black3"/>
-  </LinearLayout>
-</LinearLayout>
+      android:textColor="@color/black3"
+      app:layout_constraintBottom_toBottomOf="@+id/editText_writeInput"
+      app:layout_constraintEnd_toEndOf="@+id/editText_writeInput"
+      app:layout_constraintTop_toTopOf="@+id/editText_writeInput"/>
+  </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
