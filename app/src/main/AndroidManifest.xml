@@ -12,23 +12,25 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity
+      android:name=".view.calendar.CalendarActivity"
+      android:launchMode="singleTask"
+      android:clearTaskOnLaunch="true"/>
+    <activity
+      android:name=".view.diaryDetail.DiaryDetailActivity"
+      android:launchMode="singleTask"
+      android:clearTaskOnLaunch="true"/>
+    <activity android:name=".view.friendsSetting.FriendsSettingActivity"/>
     <activity android:name=".view.main.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
-
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity
+      android:name=".view.setting.SettingActivity"
+      android:launchMode="singleTask"
+      android:clearTaskOnLaunch="true"/>
     <activity android:name=".view.write.WriteActivity" />
-    <activity android:name=".view.diaryDetail.DiaryDetailActivity"
-      android:launchMode="singleTask"
-      android:clearTaskOnLaunch="true"/>
-    <activity android:name=".view.calendar.CalendarActivity"
-      android:launchMode="singleTask"
-      android:clearTaskOnLaunch="true"/>
-    <activity android:name=".view.setting.SettingActivity"
-      android:launchMode="singleTask"
-      android:clearTaskOnLaunch="true"></activity>
   </application>
-
 </manifest>

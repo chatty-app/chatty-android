@@ -1,5 +1,7 @@
 package com.chatty.android.chattyClient.state.action;
 
+import android.util.Log;
+
 import com.chatty.android.chattyClient.api.ChattyApi;
 import com.chatty.android.chattyClient.constants.ActionType;
 import com.chatty.android.chattyClient.model.TimelineEntry;
@@ -26,7 +28,6 @@ public class DiaryAction {
           @Override
           public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
             ArrayList<TimelineEntry> dummyEntries = new ArrayList<>();
-
             TimelineEntry dummyEntry1 = new TimelineEntry(
               "https://cdn1.medicalnewstoday.com/content/images/headlines/271/271157/bananas.jpg",
               new Date(),
