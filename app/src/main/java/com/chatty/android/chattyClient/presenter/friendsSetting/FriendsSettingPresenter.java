@@ -1,6 +1,7 @@
 package com.chatty.android.chattyClient.presenter.friendsSetting;
 
-import com.chatty.android.chattyClient.module.StateManager.StateManager;
+import com.chatty.android.chattyClient.model.State;
+import com.chatty.android.chattyClient.module.StateManagerWrapper;
 import com.chatty.android.chattyClient.view.friendsSetting.FriendsSettingActivity;
 
 import java.util.HashMap;
@@ -13,7 +14,7 @@ public class FriendsSettingPresenter {
   }
 
   public void construct() {
-    StateManager.subscribe(FriendsSettingPresenter::stateListener);
+    StateManagerWrapper.subscribe(this::stateListener);
     view.render();
     presenterDidMount();
   }
@@ -21,8 +22,8 @@ public class FriendsSettingPresenter {
   private void presenterDidMount() {
   }
 
-  public static Object stateListener(HashMap state) {
-    StateManager.printMap(state);
+  public Object stateListener(State state) {
+    StateManagerWrapper.log(this.getClass().getSimpleName(), state);
     return null;
   }
 }
