@@ -76,4 +76,6 @@
   <dimen name="size_16dp">16dp</dimen>
   <dimen name="size_19dp">19dp</dimen>
   <dimen name="text_size_10sp">10sp</dimen>
+  <dimen name="SIZE_60">60dp</dimen>
+  <dimen name="SIZE_15">15dp</dimen>
 </resources>

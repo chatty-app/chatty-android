@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
   android:layout_height="match_parent"
   android:layout_width="match_parent"
   android:orientation="vertical"
-  xmlns:android="http://schemas.android.com/apk/res/android">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+  <include
+    android:id="@+id/item_global_header"
+    android:layout_height="@dimen/SIZE_56"
+    android:layout_width="@dimen/match_constraint"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    layout="@layout/item_global_header"/>
   <include
     android:id="@+id/item_header"
+    android:layout_height="@dimen/SIZE_60"
+    android:layout_width="@dimen/match_constraint"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/item_global_header"
     layout="@layout/item_diary_detail_header"/>
   <android.support.v7.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/recyclerView_diary"/>
-</LinearLayout>
+    android:id="@+id/recyclerView_diary"
+    android:layout_height="@dimen/match_constraint"
+    android:layout_width="@dimen/match_constraint"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/item_header"/>
+</android.support.constraint.ConstraintLayout>

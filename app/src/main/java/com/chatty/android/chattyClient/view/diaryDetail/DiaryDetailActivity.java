@@ -1,9 +1,14 @@
 package com.chatty.android.chattyClient.view.diaryDetail;
 
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chatty.android.chattyClient.R;
@@ -19,15 +24,25 @@ import butterknife.ButterKnife;
 
 public class DiaryDetailActivity extends AppCompatActivity {
   private DiaryDetailPresenter presenter;
-  
-  @BindView(R.id.textView_name)
+  private static final String DIARY_TITLE = "Diary";
+
+  @BindView(R.id.button_timeline_left)
+  public ImageButton backButton;
+
+  @BindView(R.id.image_diary_partner)
+  public ImageView partnerImageView;
+
+  @BindView(R.id.textView_diary_partner_name)
   public TextView name;
 
-  @BindView(R.id.textView_date)
+  @BindView(R.id.textView_diary_date)
   public TextView date;
 
-  @BindView(R.id.textView_weather)
-  public TextView weather;
+  @BindView(R.id.imageView_diary_weather)
+  public ImageView weather;
+
+  @BindView(R.id.imageView_diary_emotion)
+  public ImageView emotions;
 
   @BindView(R.id.recyclerView_diary)
   RecyclerView recyclerView;
@@ -43,8 +58,23 @@ public class DiaryDetailActivity extends AppCompatActivity {
 
     loadDependencies();
 
-
+    construct();
     initView();
+  }
+
+  private void construct() {
+
+    circleImageView();
+    viewBackButton();
+
+    TextView textView = findViewById(R.id.textView_timeline_title);
+    textView.setText(DIARY_TITLE);
+  }
+
+  private void viewBackButton() {
+      backButton.setOnClickListener(view -> {
+        finish();
+    });
   }
 
   private void loadDependencies() {
@@ -55,6 +85,7 @@ public class DiaryDetailActivity extends AppCompatActivity {
   public void initView() {
     diaries = new ArrayList<>();
     setDummyData();
+
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     diaryAdapter = new DiaryAdapter(getApplicationContext(), diaries);
     recyclerView.setAdapter(diaryAdapter);
@@ -62,12 +93,19 @@ public class DiaryDetailActivity extends AppCompatActivity {
     initHeader();
   }
 
+  private void circleImageView() {
+    partnerImageView.setBackground(new ShapeDrawable(new OvalShape()));
+    if(Build.VERSION.SDK_INT >= 21) {
+      partnerImageView.setClipToOutline(true);
+    }
+  }
+
   private void initHeader() {
     Diary currentDiary = diaries.get(0);
 
     name.setText(currentDiary.getUsername());
     date.setText(currentDiary.getDate());
-    weather.setText(currentDiary.getWeather());
+//    weather.setText(currentDiary.getWeather());
 
   }
 
