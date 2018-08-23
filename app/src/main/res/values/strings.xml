@@ -19,5 +19,9 @@
   <string name="SETTING_MAIN_NOTIFICATION">Notification</string>
   <string name="SETTING_MAIN_SUPPORT">Support</string>
   <string name="SETTING_MAIN_VERSION">Version 0.1</string>
+  <string name="SETTING_PROFILE_MAIN_DIARY">Diaries written together</string>
+  <string name="SETTING_PROFILE_MAIN_DURING">Days we have shared</string>
+  <string name="SETTING_PROFILE_MAIN_EDIT_BUTTON">Edit Friend</string>
+  <string name="SETTING_PROFILE_MAIN_STARTDATE">The first day we met</string>
 
 </resources>
