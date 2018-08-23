@@ -2,6 +2,8 @@ package com.chatty.android.chattyClient.view.friendsSetting;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -18,6 +20,9 @@ public class FriendsSettingActivity extends AppCompatActivity {
 
   @BindView(R.id.button_timeline_left)
   public ImageButton imageButtonBack;
+
+  @BindView(R.id.button_edit_profile)
+  public Button buttonEditProfile;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,13 @@ public class FriendsSettingActivity extends AppCompatActivity {
   private void headerRender() {
     setHeaderTitle();
     renderBackButton();
+    renderEditProfileButton();
+  }
+
+  private void renderEditProfileButton() {
+    buttonEditProfile.setOnClickListener((__) -> {
+      Log.e("버튼 클릭", "다음 화면으로 이동!");
+    });
   }
 
   private void renderBackButton() {
