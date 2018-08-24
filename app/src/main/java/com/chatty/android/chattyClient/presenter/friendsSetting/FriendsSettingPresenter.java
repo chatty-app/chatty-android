@@ -20,6 +20,9 @@ public class FriendsSettingPresenter {
   }
 
   private void presenterDidMount() {
+    try {
+      StateManagerWrapper.dispatch()
+    }
   }
 
   public Object stateListener(State state) {

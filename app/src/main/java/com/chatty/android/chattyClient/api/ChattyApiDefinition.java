@@ -2,11 +2,13 @@ package com.chatty.android.chattyClient.api;
 
 import com.chatty.android.chattyClient.model.request.ChatRequest;
 import com.chatty.android.chattyClient.model.response.ChatResponse;
+import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ChattyApiDefinition {
   @GET("/startchat")
@@ -17,4 +19,10 @@ public interface ChattyApiDefinition {
     @Body
     ChatRequest chatRequest
   );
+
+  @GET("/partners/profile/{partner_id}")
+  Call<PartnerProfileDetailResponse> getPartnerProfileDetail(
+    @Path("partner_id") int partner_id
+  );
+
 }
