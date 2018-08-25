@@ -1,8 +1,6 @@
-package com.chatty.android.chattyClient.model.response;
+package com.chatty.android.chattyClient.model;
 
-import java.util.Date;
-
-public class PartnerProfileDetailResponse {
+public class PartnerProfileDetailEntry {
   public int id;
   public String profileImage;
   public String name;
@@ -10,6 +8,19 @@ public class PartnerProfileDetailResponse {
   public int diaryCount;
   public int daysTogether;
   public String createDate;
+
+  public PartnerProfileDetailEntry() {
+  }
+
+  public PartnerProfileDetailEntry(int id, String profileImage, String name, String bio, int diaryCount, int daysTogether, String createDate) {
+    this.id = id;
+    this.profileImage = profileImage;
+    this.name = name;
+    this.bio = bio;
+    this.diaryCount = diaryCount;
+    this.daysTogether = daysTogether;
+    this.createDate = createDate;
+  }
 
   public int getId() {
     return id;
