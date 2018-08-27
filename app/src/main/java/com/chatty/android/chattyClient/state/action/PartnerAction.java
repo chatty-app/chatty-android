@@ -25,15 +25,9 @@ public class PartnerAction {
           @Override
           public void onResponse(Call<PartnerProfileDetailResponse> call, Response<PartnerProfileDetailResponse> response) {
 //            TODO: new Parter에 매개변수가 call.getId 이런식으로 처리가 되어야 한다.
-            PartnerProfileDetailEntry partnerProfile = new PartnerProfileDetailEntry(
-              1,
-              "https://img.geocaching.com/track/display/dec778cb-f0ff-4472-a020-27b9ba8aa4f4.jpg",
-              "Homer. J. Simpsons",
-              "Do'h!!!!!!!",
-              10,
-              14,
-              "2018-07-21"
-            );
+//            PartnerProfileDetailResponse partnerProfile = response.body();
+//        TODO: 서버와 연결 후에는 아래의 getDummyProfileDetail() 메서드와 관련된 코드들을 모두 지울 것
+            PartnerProfileDetailResponse partnerProfile = getDummyProfileDetail();
             HashMap result = new HashMap<>();
             result.put("partnerProfileDetail", partnerProfile);
             dispatch.run(new Action(ActionType.REQUEST_GET_PARTNER_PROFILE_DETAIL_SUCCESS, result));
@@ -45,5 +39,19 @@ public class PartnerAction {
           }
         });
     };
+  }
+
+  private static PartnerProfileDetailResponse getDummyProfileDetail() {
+    PartnerProfileDetailResponse partnerProfileDetailResponse = new PartnerProfileDetailResponse(
+      1,
+      "https://img.geocaching.com/track/display/dec778cb-f0ff-4472-a020-27b9ba8aa4f4.jpg",
+      "Homer. J. Simpsons",
+      "Do'h!!!!!!!",
+      10,
+      14,
+      "2018-07-21"
+    );
+
+    return partnerProfileDetailResponse;
   }
 }

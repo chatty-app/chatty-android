@@ -11,6 +11,16 @@ public class PartnerProfileDetailResponse {
   public int daysTogether;
   public String createDate;
 
+  public PartnerProfileDetailResponse(int id, String profileImage, String name, String bio, int diaryCount, int daysTogether, String createDate) {
+    this.id = id;
+    this.profileImage = profileImage;
+    this.name = name;
+    this.bio = bio;
+    this.diaryCount = diaryCount;
+    this.daysTogether = daysTogether;
+    this.createDate = createDate;
+  }
+
   public int getId() {
     return id;
   }

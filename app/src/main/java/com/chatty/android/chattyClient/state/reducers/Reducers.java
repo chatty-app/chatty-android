@@ -5,6 +5,7 @@ import com.chatty.android.chattyClient.externalModules.StateManager.Action;
 import com.chatty.android.chattyClient.model.PartnerProfileDetailEntry;
 import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.model.TimelineEntry;
+import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
 
 import java.util.ArrayList;
 
@@ -24,10 +25,25 @@ public class Reducers {
         state.setTimeline(list);
         return state;
       case ActionType.REQUEST_GET_PARTNER_PROFILE_DETAIL_SUCCESS:
-        PartnerProfileDetailEntry partnerProfileDetailEntry = (PartnerProfileDetailEntry) action.getPayload().get("partnerProfileDetail");
+        PartnerProfileDetailResponse partnerProfileDetailResponse = (PartnerProfileDetailResponse) action.getPayload().get("partnerProfileDetail");
+        PartnerProfileDetailEntry partnerProfileDetailEntry = changePartnerProfile(partnerProfileDetailResponse);
         state.setPartnerProfileDetail(partnerProfileDetailEntry);
+        return state;
       default:
         return state;
     }
+  }
+
+  private static PartnerProfileDetailEntry changePartnerProfile(PartnerProfileDetailResponse partnerProfileDetailResponse) {
+    PartnerProfileDetailEntry partnerProfileDetailEntry = new PartnerProfileDetailEntry(
+      partnerProfileDetailResponse.getId(),
+      partnerProfileDetailResponse.getProfileImage(),
+      partnerProfileDetailResponse.getName(),
+      partnerProfileDetailResponse.getBio(),
+      partnerProfileDetailResponse.getDiaryCount(),
+      partnerProfileDetailResponse.getDaysTogether(),
+      partnerProfileDetailResponse.getCreateDate()
+    );
+    return partnerProfileDetailEntry;
   }
 }
