@@ -8,10 +8,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.model.PartnerProfileDetailEntry;
 import com.chatty.android.chattyClient.presenter.friendsSetting.FriendsSettingPresenter;
 
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -86,11 +90,16 @@ public class FriendsSettingActivity extends AppCompatActivity {
 
   public void renderPartnerProfile(PartnerProfileDetailEntry partnerProfileDetail) {
     PartnerProfileDetailEntry currentPartnerProfileDetail = partnerProfileDetail;
-//    TODO: Glide를 이용하여 ImageView 처리하가ㅣ
+    String profileImage = partnerProfileDetail.getProfileImage();
+
     textViewProfileName.setText(currentPartnerProfileDetail.getName());
     textViewProfileBio.setText(currentPartnerProfileDetail.getBio());
     textViewProfileDiary.setText(String.valueOf(currentPartnerProfileDetail.getDiaryCount()));
     textViewProfileDuring.setText(String.valueOf(currentPartnerProfileDetail.getDaysTogether()));
     textViewProfileStartDate.setText(currentPartnerProfileDetail.getCreateDate());
+
+    Glide.with(this)
+      .load(profileImage)
+      .into(imageViewProfileImage);
   }
 }
