@@ -26,7 +26,7 @@ public class Reducers {
         return state;
       case ActionType.REQUEST_GET_PARTNER_PROFILE_DETAIL_SUCCESS:
         PartnerProfileDetailResponse partnerProfileDetailResponse = (PartnerProfileDetailResponse) action.getPayload().get("partnerProfileDetail");
-        PartnerProfileDetailEntry partnerProfileDetailEntry = changePartnerProfile(partnerProfileDetailResponse);
+        PartnerProfileDetailEntry partnerProfileDetailEntry = makePartnerProfile(partnerProfileDetailResponse);
         state.setPartnerProfileDetail(partnerProfileDetailEntry);
         return state;
       default:
@@ -34,7 +34,7 @@ public class Reducers {
     }
   }
 
-  private static PartnerProfileDetailEntry changePartnerProfile(PartnerProfileDetailResponse partnerProfileDetailResponse) {
+  private static PartnerProfileDetailEntry makePartnerProfile(PartnerProfileDetailResponse partnerProfileDetailResponse) {
     PartnerProfileDetailEntry partnerProfileDetailEntry = new PartnerProfileDetailEntry(
       partnerProfileDetailResponse.getId(),
       partnerProfileDetailResponse.getProfileImage(),

@@ -58,10 +58,10 @@ public class FriendsSettingActivity extends AppCompatActivity {
   }
 
   public void render() {
-    headerRender();
+    renderHeader();
   }
 
-  private void headerRender() {
+  private void renderHeader() {
     setHeaderTitle();
     renderBackButton();
     renderEditProfileButton();
