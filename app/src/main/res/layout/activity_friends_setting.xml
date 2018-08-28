@@ -6,15 +6,13 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context=".view.friendsSetting.FriendsSettingActivity">
-
   <include
     android:id="@+id/header"
     layout="@layout/item_global_header"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/imageView_profile" />
-  
+    app:layout_constraintBottom_toTopOf="@+id/imageView_profile"/>
   <ImageView
     android:id="@+id/imageView_profile"
     android:src="@mipmap/ic_launcher_round"
@@ -25,8 +23,7 @@
     app:layout_constraintTop_toBottomOf="@id/header"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/textView_profile_name" />
-
+    app:layout_constraintBottom_toTopOf="@+id/textView_profile_name"/>
   <TextView
     android:id="@+id/textView_profile_name"
     android:layout_width="wrap_content"
@@ -38,9 +35,7 @@
     app:layout_constraintTop_toBottomOf="@id/imageView_profile"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/textView_profile_bio"
-    />
-
+    app:layout_constraintBottom_toTopOf="@+id/textView_profile_bio"/>
   <TextView
     android:id="@+id/textView_profile_bio"
     android:layout_width="wrap_content"
@@ -51,9 +46,7 @@
     android:layout_marginTop="@dimen/SIZE_8"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_name"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    />
-
+    app:layout_constraintEnd_toEndOf="parent"/>
   <TextView
     android:id="@+id/textView_profile_diary_question"
     android:layout_width="wrap_content"
@@ -66,7 +59,7 @@
     app:layout_constraintHorizontal_chainStyle="spread_inside"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_bio"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/textView_profile_diary_answer" />
+    app:layout_constraintEnd_toStartOf="@+id/textView_profile_diary_answer"/>
   <TextView
     android:id="@+id/textView_profile_diary_answer"
     android:layout_width="wrap_content"
@@ -78,8 +71,7 @@
     android:layout_marginEnd="@dimen/SIZE_20"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_bio"
     app:layout_constraintStart_toEndOf="@id/textView_profile_diary_question"
-    app:layout_constraintEnd_toEndOf="parent" />
-
+    app:layout_constraintEnd_toEndOf="parent"/>
   <TextView
     android:id="@+id/textView_profile_during_question"
     android:layout_width="wrap_content"
@@ -92,7 +84,7 @@
     app:layout_constraintHorizontal_chainStyle="spread_inside"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_diary_question"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/textView_profile_during_answer" />
+    app:layout_constraintEnd_toStartOf="@+id/textView_profile_during_answer"/>
   <TextView
     android:id="@+id/textView_profile_during_answer"
     android:layout_width="wrap_content"
@@ -104,8 +96,7 @@
     android:layout_marginEnd="@dimen/SIZE_20"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_diary_question"
     app:layout_constraintStart_toEndOf="@id/textView_profile_during_question"
-    app:layout_constraintEnd_toEndOf="parent" />
-
+    app:layout_constraintEnd_toEndOf="parent"/>
   <TextView
     android:id="@+id/textView_profile_startdate_question"
     android:layout_width="wrap_content"
@@ -118,7 +109,7 @@
     app:layout_constraintHorizontal_chainStyle="spread_inside"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_during_question"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/textView_profile_startdate_answer" />
+    app:layout_constraintEnd_toStartOf="@+id/textView_profile_startdate_answer"/>
   <TextView
     android:id="@+id/textView_profile_startdate_answer"
     android:layout_width="wrap_content"
@@ -130,8 +121,7 @@
     android:layout_marginEnd="@dimen/SIZE_20"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_during_question"
     app:layout_constraintStart_toEndOf="@id/textView_profile_startdate_question"
-    app:layout_constraintEnd_toEndOf="parent" />
-
+    app:layout_constraintEnd_toEndOf="parent"/>
   <!--TODO: Add radius option in button-->
   <Button
     android:id="@+id/button_edit_profile"
@@ -148,7 +138,5 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
-    style="?android:attr/borderlessButtonStyle"
-    />
-
+    style="?android:attr/borderlessButtonStyle"/>
 </android.support.constraint.ConstraintLayout>

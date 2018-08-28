@@ -24,8 +24,8 @@ public class PartnerAction {
         .enqueue(new Callback<PartnerProfileDetailResponse>() {
           @Override
           public void onResponse(Call<PartnerProfileDetailResponse> call, Response<PartnerProfileDetailResponse> response) {
-//            TODO: new Parter에 매개변수가 call.getId 이런식으로 처리가 되어야 한다.
-//            PartnerProfileDetailResponse partnerProfile = response.body();
+//      TODO: new Parter에 매개변수가 call.getId 이런식으로 처리가 되어야 한다.
+//        PartnerProfileDetailResponse partnerProfile = response.body();
 //        TODO: 서버와 연결 후에는 아래의 getDummyProfileDetail() 메서드와 관련된 코드들을 모두 지울 것
             PartnerProfileDetailResponse partnerProfile = getDummyProfileDetail();
             HashMap result = new HashMap<>();
