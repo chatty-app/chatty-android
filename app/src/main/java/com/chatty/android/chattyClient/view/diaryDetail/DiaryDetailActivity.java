@@ -12,11 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chatty.android.chattyClient.R;
+import com.chatty.android.chattyClient.externalModules.Renderer.Renderer;
 import com.chatty.android.chattyClient.model.Diary;
+import com.chatty.android.chattyClient.model.TimelineEntry;
 import com.chatty.android.chattyClient.presenter.diaryDetail.DiaryAdapter;
 import com.chatty.android.chattyClient.presenter.diaryDetail.DiaryDetailPresenter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -45,48 +48,43 @@ public class DiaryDetailActivity extends AppCompatActivity {
   public ImageView emotions;
 
   @BindView(R.id.recyclerView_diary)
-  RecyclerView recyclerView;
-  private RecyclerView.Adapter diaryAdapter;
+  public RecyclerView recyclerView;
+  private DiaryAdapter diaryAdapter;
 
-  private List<Diary> diaries;
+  private ArrayList<Diary> diaries;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.item_diary_detail);
+    this.construct();
 
-    loadDependencies();
-
-    construct();
     initView();
   }
 
   private void construct() {
-    circleImageView();
-    viewBackButton();
+    setContentView(R.layout.item_diary_detail);
+    ButterKnife.bind(this);
+
+    presenter = new DiaryDetailPresenter(this);
+    this.presenter.construct();
+  }
+
+  public void initRender(ArrayList<Diary> diaries) {
 
     TextView textView = findViewById(R.id.textView_timeline_title);
     textView.setText(DIARY_TITLE);
-  }
 
-  private void viewBackButton() {
-    backButton.setOnClickListener((view) -> finish());
+    this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    this.diaryAdapter = new DiaryAdapter(this, diaries);
+    this.recyclerView.setAdapter(diaryAdapter);
   }
-
-  private void loadDependencies() {
-    presenter = new DiaryDetailPresenter(this);
-    ButterKnife.bind(this);
-  }
-
   public void initView() {
     diaries = new ArrayList<>();
-    setDummyData();
 
-    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    diaryAdapter = new DiaryAdapter(getApplicationContext(), diaries);
-    recyclerView.setAdapter(diaryAdapter);
-
-    initHeader();
+    circleImageView();
+    viewBackButton();
+    TextView textView = findViewById(R.id.textView_timeline_title);
+    textView.setText(DIARY_TITLE);
   }
 
   private void circleImageView() {
@@ -94,24 +92,23 @@ public class DiaryDetailActivity extends AppCompatActivity {
     this.profileAvatarImg.setClipToOutline(true);
   }
 
-  private void initHeader() {
-    Diary currentDiary = diaries.get(0);
-
-    name.setText(currentDiary.getUsername());
-    date.setText(currentDiary.getDate());
-//    weather.setText(currentDiary.getWeather());
+  public void render(
+    ArrayList<Diary> diary
+  ) {
+    Renderer.render(
+      this,
+      Arrays.asList(diary),
+      this::renderDiaryView);
   }
 
-  private void setDummyData() {
-    for(int num = 0 ; num<5 ; num++) {
-      Diary diary = new Diary();
-      diary.setUsername("이동근");
-      diary.setDate("2018/06/30");
-      diary.setWeather("비온다");
-      diary.setQuestion("질문 " + num);
-      diary.setAnswer("대답" + num);
-
-      diaries.add(diary);
-    }
+  private void renderDiaryView(Object diary) {
+    this.diaryAdapter.update((List<Diary>) diary);
   }
+
+  private void viewBackButton() {
+    backButton.setOnClickListener(view -> {
+      finish();
+    });
+  }
+
 }

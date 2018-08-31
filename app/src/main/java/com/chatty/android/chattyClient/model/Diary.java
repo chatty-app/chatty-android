@@ -1,14 +1,24 @@
 package com.chatty.android.chattyClient.model;
 
-public class Diary {
-  String profileImage;
-  String Username;
-  String date;
-  String weather;
-  String question;
-  String answer;
+import com.chatty.android.chattyClient.model.response.DiaryResponse;
 
-  public String getProfileImage() {
+import java.util.ArrayList;
+
+public class Diary extends ArrayList<Diary> {
+/*  private String profileImage;
+  private String username;
+  private String date;
+  private String weather;
+  private Date emotion;*/
+  private String question;
+  private String answer;
+
+  public Diary (String question, String answer) {
+    this.question = question;
+    this.answer = answer;
+  }
+
+  /*public String getProfileImage() {
     return profileImage;
   }
 
@@ -17,11 +27,11 @@ public class Diary {
   }
 
   public String getUsername() {
-    return Username;
+    return username;
   }
 
   public void setUsername(String username) {
-    Username = username;
+    this.username = username;
   }
 
   public String getDate() {
@@ -36,13 +46,19 @@ public class Diary {
     return weather;
   }
 
-  public void setWeather(String weather) {
+  public void setWeather(Date date) {
     this.weather = weather;
   }
 
-  public String getQuestion() {
-    return question;
+  public Date getEmotion() {
+    return emotion;
   }
+
+  public void setEmotion(Date date) {
+    this.emotion = emotion;
+  }*/
+
+  public String getQuestion() { return question;}
 
   public void setQuestion(String question) {
     this.question = question;

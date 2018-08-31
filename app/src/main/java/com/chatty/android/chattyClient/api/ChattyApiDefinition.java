@@ -3,6 +3,7 @@ package com.chatty.android.chattyClient.api;
 import com.chatty.android.chattyClient.model.request.ChatRequest;
 import com.chatty.android.chattyClient.model.response.ChatResponse;
 import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
+import com.chatty.android.chattyClient.model.response.DiaryResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -25,4 +26,8 @@ public interface ChattyApiDefinition {
     @Path("partner_id") int partner_id
   );
 
+  @GET("/diary/{diary_id}")
+  Call<DiaryResponse> postDiaryChat(
+    @Path("diary_id") int diary_id
+  );
 }
