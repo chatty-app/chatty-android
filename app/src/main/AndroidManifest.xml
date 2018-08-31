@@ -5,32 +5,35 @@
   <uses-permission android:name="android.permission.INTERNET" />
 
   <application
-    android:name=".App"
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
+    android:name=".App"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name=".view.addFriend.AddFriendActivity"/>
     <activity
+      android:clearTaskOnLaunch="true"
       android:name=".view.calendar.CalendarActivity"
-      android:launchMode="singleTask"
-      android:clearTaskOnLaunch="true"/>
+      android:launchMode="singleTask" />
     <activity
+      android:clearTaskOnLaunch="true"
       android:name=".view.diaryDetail.DiaryDetailActivity"
-      android:launchMode="singleTask"
-      android:clearTaskOnLaunch="true"/>
-    <activity android:name=".view.friendsSetting.FriendsSettingActivity"/>
+      android:launchMode="singleTask" />
+    <activity android:name=".view.friendsSetting.FriendsSettingActivity" />
     <activity android:name=".view.main.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
+
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity
+      android:clearTaskOnLaunch="true"
       android:name=".view.setting.SettingActivity"
-      android:launchMode="singleTask"
-      android:clearTaskOnLaunch="true"/>
+      android:launchMode="singleTask" />
     <activity android:name=".view.write.WriteActivity" />
   </application>
+
 </manifest>
