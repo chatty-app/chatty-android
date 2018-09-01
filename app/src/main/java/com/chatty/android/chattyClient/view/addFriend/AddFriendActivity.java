@@ -1,8 +1,10 @@
 package com.chatty.android.chattyClient.view.addFriend;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.presenter.addFriend.AddFriendPresenter;
+import com.chatty.android.chattyClient.view.friendsSetting.FriendsSettingActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +30,9 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   @BindView(R.id.imageView_addProfile_button)
   public ImageView imageViewAddProfileButton;
 
+  @BindView(R.id.button_add_profile)
+  public Button  buttonAddProfile;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -34,31 +40,44 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   private void construct() {
-    setContentView(R.layout.activity_add_friend);
+    this.setContentView(R.layout.activity_add_friend);
     ButterKnife.bind(this);
     presenter = new AddFriendPresenter(this);
     presenter.construct();
   }
 
   public void render() {
-    renderHeader();
-    renderForm();
+    this.renderHeader();
+    this.renderForm();
   }
 
   private void renderForm() {
-    renderProfileImage();
+    this.renderProfileImage();
   }
 
   private void renderProfileImage() {
-    profileImageButtonManager();
+    this.profileImageButtonManager();
+    this.profileSubmitButtonManager();
+  }
+
+  private void profileSubmitButtonManager() {
+    this.buttonAddProfile.setOnClickListener((__) -> {
+      presenter.setIsFriend();
+      this.startFriendsSettingActivity();
+    });
+  }
+
+  private void startFriendsSettingActivity() {
+    this.startActivity(new Intent(this, FriendsSettingActivity.class));
+    finish();
   }
 
   private void profileImageButtonManager() {
-    imageViewProfile.setOnClickListener(view -> {
-      profileImageButtonAction();
+    this.imageViewProfile.setOnClickListener((__) -> {
+      this.profileImageButtonAction();
     });
-    imageViewAddProfileButton.setOnClickListener(view -> {
-      profileImageButtonAction();
+    this.imageViewAddProfileButton.setOnClickListener((__) -> {
+      this.profileImageButtonAction();
     });
   }
 
@@ -67,8 +86,8 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   private void renderHeader() {
-    setHeaderTitle();
-    renderBackButton();
+    this.setHeaderTitle();
+    this.renderBackButton();
   }
 
   private void setHeaderTitle() {
@@ -77,7 +96,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   private void renderBackButton() {
-    imageButtonBack.setOnClickListener((__) -> {
+    this.imageButtonBack.setOnClickListener((__) -> {
       finish();
     });
   }

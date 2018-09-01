@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.chatty.android.chattyClient.App;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.presenter.setting.SettingPresenter;
+import com.chatty.android.chattyClient.view.addFriend.AddFriendActivity;
 import com.chatty.android.chattyClient.view.friendsSetting.FriendsSettingActivity;
 import com.chatty.android.chattyClient.view.main.MainActivity;
 
@@ -47,16 +49,16 @@ public class SettingActivity extends AppCompatActivity {
   }
 
   private void construct() {
-    setContentView(R.layout.activity_setting);
+    this.setContentView(R.layout.activity_setting);
     ButterKnife.bind(this);
     presenter = new SettingPresenter(this);
     presenter.construct();
   }
 
   public void render() {
-    alertBuilder = new AlertDialog.Builder(SettingActivity.this, R.style.AlertDialogStyle);
-    renderHeader();
-    buttonRender();
+    this.alertBuilder = new AlertDialog.Builder(SettingActivity.this, R.style.AlertDialogStyle);
+    this.renderHeader();
+    this.buttonRender();
   }
 
   private void renderHeader() {
@@ -67,58 +69,64 @@ public class SettingActivity extends AppCompatActivity {
   }
 
   private void buttonRender() {
-    renderLinkAccountButton();
-    renderFriendsSettingButton();
-    renderAddQuestionButton();
-    renderNotificationButton();
-    renderSupportButton();
+    this.renderLinkAccountButton();
+    this.renderFriendsSettingButton();
+    this.renderAddQuestionButton();
+    this.renderNotificationButton();
+    this.renderSupportButton();
   }
 
   private void renderLinkAccountButton() {
-    textViewButtonLinkAccount.setOnClickListener((__) -> {
-      renderSorryAlert();
+    this.textViewButtonLinkAccount.setOnClickListener((__) -> {
+      this.renderSorryAlert();
     });
   }
 
   private void renderFriendsSettingButton() {
-    textViewButtonFriendsSetting.setOnClickListener((__) -> {
-      startFriendsSettingActivity();
+    this.textViewButtonFriendsSetting.setOnClickListener((__) -> {
+      this.startFriendsSettingActivity();
     });
   }
 
   private void renderAddQuestionButton() {
-    textViewButtonAddQuestion.setOnClickListener((__) -> {
-      renderSorryAlert();
+    this.textViewButtonAddQuestion.setOnClickListener((__) -> {
+      this.renderSorryAlert();
     });
   }
 
   private void renderNotificationButton() {
-    textViewButtonNotification.setOnClickListener((__) -> {
-      renderSorryAlert();
+    this.textViewButtonNotification.setOnClickListener((__) -> {
+      this.renderSorryAlert();
     });
   }
 
   private void renderSupportButton() {
-    textViewButtonSupport.setOnClickListener((__) -> {
-      renderSupportAlert();
+    this.textViewButtonSupport.setOnClickListener((__) -> {
+      this.renderSupportAlert();
     });
   }
 
   private void renderSupportAlert() {
-    alertBuilder.setTitle(SUPPORT_TITLE);
-    alertBuilder.setMessage(SUPPORT_MESSAGE);
-    alertBuilder.setPositiveButton(ALERT_SUBMIT, null);
-    alertBuilder.create().show();
+    this.alertBuilder.setTitle(SUPPORT_TITLE);
+    this.alertBuilder.setMessage(SUPPORT_MESSAGE);
+    this.alertBuilder.setPositiveButton(ALERT_SUBMIT, null);
+    this.alertBuilder.create().show();
   }
 
   private void renderSorryAlert() {
-    alertBuilder.setTitle(SORRY_TITLE);
-    alertBuilder.setMessage(SORRY_MESSAGE);
-    alertBuilder.setPositiveButton(ALERT_SUBMIT, null);
-    alertBuilder.create().show();
+    this.alertBuilder.setTitle(SORRY_TITLE);
+    this.alertBuilder.setMessage(SORRY_MESSAGE);
+    this.alertBuilder.setPositiveButton(ALERT_SUBMIT, null);
+    this.alertBuilder.create().show();
   }
 
   private void startFriendsSettingActivity() {
-    startActivity(new Intent(this, FriendsSettingActivity.class));
+    boolean isFriend = App.userPreference.getBoolean(App.IS_FRIEND, false);
+
+    if (isFriend) {
+      this.startActivity(new Intent(this, FriendsSettingActivity.class));
+    } else {
+      this.startActivity(new Intent(this, AddFriendActivity.class));
+    }
   }
 }

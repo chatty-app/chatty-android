@@ -20,7 +20,6 @@ public class PartnerAction {
   public static StateManager.DispatcherMiddleware requestGetPartnerProfileDetail() {
     return (dispatch) -> {
       dispatch.run(Action.of(ActionType.REQUEST_GET_PARTNER_PROFILE_DETAIL));
-
       ChattyApi.getApi().getPartnerProfileDetail(1)
         .enqueue(new Callback<PartnerProfileDetailResponse>() {
           @Override

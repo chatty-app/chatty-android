@@ -19,13 +19,12 @@ public class FriendsSettingPresenter implements ExtendedPresenter<State> {
   public void construct() {
     StateManagerWrapper.subscribe(this::stateListener);
     view.render();
-    presenterDidMount();
+    this.presenterDidMount();
   }
 
   @Override
   public void presenterDidMount() {
     try {
-      Log.e("Check", "123123!");
       StateManagerWrapper.dispatch(PartnerAction.requestGetPartnerProfileDetail());
     } catch (Exception e) {
       e.printStackTrace();

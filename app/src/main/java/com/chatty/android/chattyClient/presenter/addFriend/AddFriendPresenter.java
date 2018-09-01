@@ -1,5 +1,8 @@
 package com.chatty.android.chattyClient.presenter.addFriend;
 
+import android.content.SharedPreferences;
+
+import com.chatty.android.chattyClient.App;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedPresenter;
 import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.module.StateManagerWrapper;
@@ -15,7 +18,7 @@ public class AddFriendPresenter implements ExtendedPresenter<State> {
   public void construct() {
     StateManagerWrapper.subscribe(this::stateListener);
     view.render();
-    presenterDidMount();
+    this.presenterDidMount();
   }
 
   @Override
@@ -24,5 +27,11 @@ public class AddFriendPresenter implements ExtendedPresenter<State> {
 
   public Object stateListener(State state) {
     return null;
+  }
+
+  public void setIsFriend() {
+    SharedPreferences.Editor editor = App.userPreference.edit();
+    editor.putBoolean(App.IS_FRIEND, true);
+    editor.commit();
   }
 }

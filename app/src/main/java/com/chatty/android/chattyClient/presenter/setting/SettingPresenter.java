@@ -15,6 +15,7 @@ public class SettingPresenter implements ExtendedPresenter<State> {
   public void construct() {
     StateManagerWrapper.subscribe(this::stateListener);
     view.render();
+    this.presenterDidMount();
   }
 
   @Override

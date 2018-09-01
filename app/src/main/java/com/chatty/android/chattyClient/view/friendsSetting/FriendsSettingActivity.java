@@ -51,34 +51,34 @@ public class FriendsSettingActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    construct();
+    this.construct();
   }
 
   private void construct() {
-    setContentView(R.layout.activity_friends_setting);
+    this.setContentView(R.layout.activity_friends_setting);
     ButterKnife.bind(this);
     presenter = new FriendsSettingPresenter(this);
     presenter.construct();
   }
 
   public void render() {
-    renderHeader();
+    this.renderHeader();
   }
 
   private void renderHeader() {
-    setHeaderTitle();
-    renderBackButton();
-    renderEditProfileButton();
+    this.setHeaderTitle();
+    this.renderBackButton();
+    this.renderEditProfileButton();
   }
 
   private void renderEditProfileButton() {
-    buttonEditProfile.setOnClickListener((__) -> {
+    this.buttonEditProfile.setOnClickListener((__) -> {
       Log.e("버튼 클릭", "다음 화면으로 이동!");
     });
   }
 
   private void renderBackButton() {
-    imageButtonBack.setOnClickListener((__) -> {
+    this.imageButtonBack.setOnClickListener((__) -> {
       finish();
     });
   }
@@ -92,14 +92,14 @@ public class FriendsSettingActivity extends AppCompatActivity {
     PartnerProfileDetailEntry currentPartnerProfileDetail = partnerProfileDetail;
     String profileImage = partnerProfileDetail.getProfileImage();
 
-    textViewProfileName.setText(currentPartnerProfileDetail.getName());
-    textViewProfileBio.setText(currentPartnerProfileDetail.getBio());
-    textViewProfileDiary.setText(String.valueOf(currentPartnerProfileDetail.getDiaryCount()));
-    textViewProfileDuring.setText(String.valueOf(currentPartnerProfileDetail.getDaysTogether()));
-    textViewProfileStartDate.setText(currentPartnerProfileDetail.getCreateDate());
+    this.textViewProfileName.setText(currentPartnerProfileDetail.getName());
+    this.textViewProfileBio.setText(currentPartnerProfileDetail.getBio());
+    this.textViewProfileDiary.setText(String.valueOf(currentPartnerProfileDetail.getDiaryCount()));
+    this.textViewProfileDuring.setText(String.valueOf(currentPartnerProfileDetail.getDaysTogether()));
+    this.textViewProfileStartDate.setText(currentPartnerProfileDetail.getCreateDate());
 
-    Glide.with(this)
+    Glide.with(getApplicationContext())
       .load(profileImage)
-      .into(imageViewProfileImage);
+      .into(this.imageViewProfileImage);
   }
 }

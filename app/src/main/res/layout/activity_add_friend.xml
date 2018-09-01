@@ -88,7 +88,7 @@
     app:layout_constraintEnd_toEndOf="parent"/>
   <!--TODO: Add radius option in button-->
   <Button
-    android:id="@+id/button_edit_profile"
+    android:id="@+id/button_add_profile"
     android:background="@color/gray1"
     android:layout_width="match_parent"
     android:layout_height="@dimen/SIZE_48"
