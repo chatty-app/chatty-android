@@ -9,9 +9,9 @@ public class StateManagerWrapper {
   public static StateManager<State> stateManager;
   private static final String STATE_MANAGER_WRAPPER = "STATE_MANAGER_WRAPPER";
 
-  public static void initialize(StateManager.Reducer reducer) {
+  public static void initialize(StateManager.Reducer reducer, State initialState) {
     StateManagerWrapper.stateManager = new StateManager<>();
-    StateManagerWrapper.stateManager.initialize(reducer, new State());
+    StateManagerWrapper.stateManager.initialize(reducer, initialState);
   }
 
   public static void dispatch(StateManager.DispatcherMiddleware r) throws Exception {

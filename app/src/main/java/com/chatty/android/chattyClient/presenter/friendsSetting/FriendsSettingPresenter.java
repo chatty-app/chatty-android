@@ -22,7 +22,6 @@ public class FriendsSettingPresenter implements ExtendedPresenter<State> {
     this.presenterDidMount();
   }
 
-  @Override
   public void presenterDidMount() {
     try {
       StateManagerWrapper.dispatch(PartnerAction.requestGetPartnerProfileDetail());

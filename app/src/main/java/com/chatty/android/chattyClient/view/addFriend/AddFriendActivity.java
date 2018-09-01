@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.module.ImagePicker;
+import com.chatty.android.chattyClient.model.request.NewPartnerRequest;
 import com.chatty.android.chattyClient.presenter.addFriend.AddFriendPresenter;
 import com.chatty.android.chattyClient.view.friendsSetting.FriendsSettingActivity;
 import com.gun0912.tedpermission.PermissionListener;
@@ -27,8 +29,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import gun0912.tedbottompicker.TedBottomPicker;
 
-public class AddFriendActivity extends AppCompatActivity implements ExtendedView<AddFriendProps>, ImagePicker {
+public class AddFriendActivity extends AppCompatActivity implements ExtendedView<AddFriendActivityProps>, ImagePicker {
   private static String HEADER_TITLE = "Add Friend";
+  private boolean isSubmitReady = false;
   AddFriendPresenter presenter;
 
   @BindView(R.id.button_timeline_left)
@@ -43,82 +46,55 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   @BindView(R.id.button_add_profile)
   public Button  buttonAddProfile;
 
+  @BindView(R.id.editText_profile_name)
+  public EditText editTextProfileName;
+
+  @BindView(R.id.editText_profile_bio)
+  public EditText editTextProfileBio;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    construct();
-  }
-
-  private void construct() {
     this.setContentView(R.layout.activity_add_friend);
     ButterKnife.bind(this);
-    presenter = new AddFriendPresenter(this);
-    presenter.construct();
+    this.presenter = new AddFriendPresenter(this);
   }
 
-  public void render() {
-    this.renderHeader();
-    this.renderForm();
-  }
+  @Override
+  public void initialRender(AddFriendActivityProps p) {
+    TextView textView = findViewById(R.id.textView_timeline_title);
+    textView.setText(HEADER_TITLE);
 
-  private void renderForm() {
-    this.renderProfileImage();
-  }
+    this.imageButtonBack.setOnClickListener(
+      p.handleClickImageButtonBack.apply(this::finish));
 
-  private void renderProfileImage() {
-    this.profileImageButtonManager();
-    this.profileSubmitButtonManager();
-  }
+    this.imageViewProfile.setOnClickListener(
+      p.handleClickImageViewProfile.apply(() -> {}));
 
-  private void profileSubmitButtonManager() {
-    this.buttonAddProfile.setOnClickListener((__) -> {
-      presenter.setIsFriend();
-      this.startFriendsSettingActivity();
-    });
-  }
+    this.imageViewAddProfileButton.setOnClickListener(
+      p.handleClickImageViewProfile.apply(() -> {}));
 
-  private void startFriendsSettingActivity() {
-    this.startActivity(new Intent(this, FriendsSettingActivity.class));
-    finish();
-  }
-
-  private void profileImageButtonManager() {
-    this.imageViewProfile.setOnClickListener((__) -> {
-      this.profileImageButtonAction();
-    });
-    this.imageViewAddProfileButton.setOnClickListener((__) -> {
-      this.profileImageButtonAction();
-    });
+    this.buttonAddProfile.setOnClickListener(
+      p.handleClickButtonAddProfile.apply(this));
   }
 
   private void profileImageButtonAction() {
     this.setPermission();
   }
 
-  private void renderHeader() {
-    this.setHeaderTitle();
-    this.renderBackButton();
-  }
-
-  private void setHeaderTitle() {
-    TextView textView = findViewById(R.id.textView_timeline_title);
-    textView.setText(HEADER_TITLE);
-  }
-
-  private void renderBackButton() {
-    this.imageButtonBack.setOnClickListener((__) -> {
-      finish();
-    });
-  }
 
   @Override
-  public void initialRender(AddFriendProps p) {
+  public void update(AddFriendActivityProps p) {
 
   }
 
-  @Override
-  public void update(AddFriendProps p) {
-
+  public void activateSubmitButton(boolean isSubmitReady) {
+    this.isSubmitReady = isSubmitReady;
+    if(this.isSubmitReady) {
+      buttonAddProfile.setBackgroundResource(R.color.main_purple);
+    } else {
+      buttonAddProfile.setBackgroundResource(R.color.gray5);
+    }
   }
 
   @Override
@@ -134,6 +110,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
         Toast.makeText(getApplicationContext(), "권한이 없습니다.", Toast.LENGTH_SHORT).show();
       }
     };
+
     TedPermission.with(getApplicationContext())
       .setPermissionListener(permissionListener)
       .setDeniedMessage("권한 설정 동의를 안하신다면, 나중에 이곳에서 설정해 주세요. [설정] > [권한]")

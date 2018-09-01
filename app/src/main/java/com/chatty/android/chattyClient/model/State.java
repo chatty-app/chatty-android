@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class State {
+  public boolean hasFriend;
   PartnerProfileDetailEntry partnerProfileDetail;
   List<TimelineEntry> timeline;
   ArrayList<Diary> diaries;

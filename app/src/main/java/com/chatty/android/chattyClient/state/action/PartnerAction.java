@@ -1,17 +1,14 @@
 package com.chatty.android.chattyClient.state.action;
 
-import android.util.Log;
-
 import com.chatty.android.chattyClient.api.ChattyApi;
 import com.chatty.android.chattyClient.constants.ActionType;
 import com.chatty.android.chattyClient.externalModules.StateManager.Action;
-import com.chatty.android.chattyClient.externalModules.StateManager.Payload;
 import com.chatty.android.chattyClient.externalModules.StateManager.StateManager;
-import com.chatty.android.chattyClient.model.PartnerProfileDetailEntry;
+import com.chatty.android.chattyClient.model.request.NewPartnerRequest;
+import com.chatty.android.chattyClient.model.response.ChatResponse;
 import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
 
-import java.util.HashMap;
-
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,6 +39,23 @@ public class PartnerAction {
           }
         });
     };
+  }
+
+  public static boolean requestAddNewPartnerProfile(NewPartnerRequest newPartnerRequest, MultipartBody.Part file) {
+    final boolean[] isSuccess = {false};
+    ChattyApi.getApi().postNewPartner(newPartnerRequest, file)
+      .enqueue(new Callback<ChatResponse>() {
+        @Override
+        public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
+          isSuccess[0] = true;
+        }
+
+        @Override
+        public void onFailure(Call<ChatResponse> call, Throwable t) {
+
+        }
+      });
+    return isSuccess[0];
   }
 
   private static PartnerProfileDetailResponse getDummyProfileDetail() {

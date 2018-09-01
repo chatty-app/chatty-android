@@ -45,10 +45,6 @@ public class SettingActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    construct();
-  }
-
-  private void construct() {
     this.setContentView(R.layout.activity_setting);
     ButterKnife.bind(this);
     presenter = new SettingPresenter(this);
@@ -121,12 +117,12 @@ public class SettingActivity extends AppCompatActivity {
   }
 
   private void startFriendsSettingActivity() {
-    boolean isFriend = App.userPreference.getBoolean(App.IS_FRIEND, false);
-
-    if (isFriend) {
-      this.startActivity(new Intent(this, FriendsSettingActivity.class));
-    } else {
-      this.startActivity(new Intent(this, AddFriendActivity.class));
-    }
+//    boolean isFriend = App.userPreference.getBoolean(App.IS_FRIEND, false);
+//
+//    if (isFriend) {
+//      this.startActivity(new Intent(this, FriendsSettingActivity.class));
+//    } else {
+//      this.startActivity(new Intent(this, AddFriendActivity.class));
+//    }
   }
 }
