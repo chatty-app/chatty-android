@@ -41,8 +41,8 @@ public class DiaryAction {
               .map((diary) -> {
                 TimelineEntry entry = new TimelineEntry();
                 entry.setDate(diary.created_at);
-                entry.setContent(diary.answer.get(0).label);
-                entry.setImgUrl(diary.answer.get(0).image);
+                entry.setContent(diary.last_answer.get(0).label);
+                entry.setImgUrl(diary.last_answer.get(0).image);
                 return entry;
               })
               .collect(Collectors.toList());
