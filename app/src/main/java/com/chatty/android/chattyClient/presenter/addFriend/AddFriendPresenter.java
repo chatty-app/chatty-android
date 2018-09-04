@@ -1,6 +1,7 @@
 package com.chatty.android.chattyClient.presenter.addFriend;
 
 import android.content.SharedPreferences;
+import android.net.Uri;
 
 import com.chatty.android.chattyClient.App;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedPresenter;
@@ -33,5 +34,10 @@ public class AddFriendPresenter implements ExtendedPresenter<State> {
     SharedPreferences.Editor editor = App.userPreference.edit();
     editor.putBoolean(App.IS_FRIEND, true);
     editor.commit();
+  }
+
+  public void selectImage(Uri uri) {
+    Uri currentImage = uri;
+    view.updateProfile(uri);
   }
 }
