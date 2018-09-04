@@ -19,6 +19,8 @@
   <string name="SETTING_MAIN_NOTIFICATION">Notification</string>
   <string name="SETTING_MAIN_SUPPORT">Support</string>
   <string name="SETTING_MAIN_VERSION">Version 0.1</string>
+  <string name="SETTING_LIST_FRIEND_NOW">Chatting with</string>
+  <string name="SETTING_LIST_FRIENDS">Friends</string>
   <string name="SETTING_PROFILE_ADD_BIO">Bio</string>
   <string name="SETTING_PROFILE_ADD_BUTTON">Done</string>
   <string name="SETTING_PROFILE_ADD_NAME">Name</string>

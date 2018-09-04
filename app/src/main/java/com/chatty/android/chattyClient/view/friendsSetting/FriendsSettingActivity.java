@@ -1,5 +1,6 @@
 package com.chatty.android.chattyClient.view.friendsSetting;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +12,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.model.PartnerProfileDetailEntry;
+import com.chatty.android.chattyClient.presenter.friendsList.FriendsListPresenter;
 import com.chatty.android.chattyClient.presenter.friendsSetting.FriendsSettingPresenter;
+import com.chatty.android.chattyClient.view.addFriend.AddFriendActivity;
+import com.chatty.android.chattyClient.view.friendsList.FriendsListActivity;
 
 
 import java.net.MalformedURLException;
@@ -48,6 +52,9 @@ public class FriendsSettingActivity extends AppCompatActivity {
   @BindView(R.id.textView_profile_startdate_answer)
   public TextView textViewProfileStartDate;
 
+  @BindView(R.id.button_timeline_right)
+  public ImageButton imageButtonList;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -69,6 +76,7 @@ public class FriendsSettingActivity extends AppCompatActivity {
     this.setHeaderTitle();
     this.renderBackButton();
     this.renderEditProfileButton();
+    this.renderListButton();
   }
 
   private void renderEditProfileButton() {
@@ -80,6 +88,12 @@ public class FriendsSettingActivity extends AppCompatActivity {
   private void renderBackButton() {
     this.imageButtonBack.setOnClickListener((__) -> {
       finish();
+    });
+  }
+
+  private void renderListButton() {
+    this.imageButtonList.setOnClickListener((__) -> {
+      new Intent(this, FriendsListActivity.class);
     });
   }
 
