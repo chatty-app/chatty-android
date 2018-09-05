@@ -20,7 +20,6 @@ import com.chatty.android.chattyClient.view.write.WriteActivity;
 
 public class MainPresenter implements ExtendedPresenter<State> {
   private MainActivity view;
-  private static Integer floatingCloseNum = 0;
   private MainPresenter(MainActivity view) {
     this.view = view;
   }
@@ -52,14 +51,14 @@ public class MainPresenter implements ExtendedPresenter<State> {
   }
 
   private void handleClickWriteButton(View v) {
-    if (floatingCloseNum==0) {
+    if (MainActivity.floatingCheckeNum==0) {
      view.floatingClose();
      Intent intent = new Intent(this.view, WriteActivity.class);
      view.startActivity(intent);
-     floatingCloseNum++;
+      MainActivity.floatingCheckeNum++;
     }
     else{
-      Log.e("floating Close check", String.valueOf(floatingCloseNum));
+      Log.e("floating Btn Close check", String.valueOf(MainActivity.floatingCheckeNum));
     }
   }
 

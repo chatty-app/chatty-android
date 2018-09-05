@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -22,6 +23,7 @@ import com.chatty.android.chattyClient.presenter.main.TimelineRecyclerViewAdapte
 import com.chatty.android.chattyClient.view.app.ProfileAvatarImage;
 import com.chatty.android.chattyClient.view.calendar.CalendarActivity;
 import com.chatty.android.chattyClient.view.setting.SettingActivity;
+import com.chatty.android.chattyClient.view.write.WriteActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements ExtendedView<Main
   public static final String HEADER_TITLE = "HEADER_TITLE";
   public static final String CALENDAR = "Calendar";
   public static final String SETTING = "Setting";
+  public static Integer floatingCheckeNum = 0;
   private MainPresenter presenter;
 
   @BindView(R.id.btn_start_chatting)
@@ -55,12 +58,19 @@ public class MainActivity extends AppCompatActivity implements ExtendedView<Main
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     this.presenter = MainPresenter.of(this);
+    StartfloatingBtn();
   }
 
+  public void StartfloatingBtn(){
+    if (floatingCheckeNum==0) {
+      writeButton.setVisibility(View.VISIBLE);
+    }
+    else{
+      Log.e("floating Close check", String.valueOf(floatingCheckeNum));
+    }
+  }
   public void floatingClose(){
-    Animation fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.floating_action_button_close);
-    FloatingActionButton fab = writeButton;
-    fab.startAnimation(fab_close);
+    writeButton.setVisibility(View.INVISIBLE);
   }
 
   public void initialRender(MainActivityProps props) {
