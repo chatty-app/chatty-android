@@ -34,6 +34,9 @@ public class DiaryDetailActivity extends AppCompatActivity implements ExtendedVi
   @BindView(R.id.button_timeline_left)
   public ImageButton backButton;
 
+  @BindView(R.id.button_timeline_right)
+  public ImageButton deleteButton;
+
   @BindView(R.id.profile_avatar_img)
   public ImageView profileAvatarImg;
 
@@ -73,6 +76,8 @@ public class DiaryDetailActivity extends AppCompatActivity implements ExtendedVi
 
     viewBackButton();
     textView.setText(DIARY_TITLE);
+
+    deleteButton.setImageResource(R.drawable.ic_icon_delete);
 
     this.profileAvatarImg.setBackground(new ShapeDrawable(new OvalShape()));
     this.profileAvatarImg.setClipToOutline(true);

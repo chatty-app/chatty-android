@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
@@ -54,6 +57,12 @@ public class MainActivity extends AppCompatActivity implements ExtendedView<Main
     this.presenter = MainPresenter.of(this);
   }
 
+  public void floatingClose(){
+    Animation fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.floating_action_button_close);
+    FloatingActionButton fab = writeButton;
+    fab.startAnimation(fab_close);
+  }
+
   public void initialRender(MainActivityProps props) {
     this.setContentView(R.layout.activity_main);
     ButterKnife.bind(this);
@@ -93,4 +102,5 @@ public class MainActivity extends AppCompatActivity implements ExtendedView<Main
   ) {
     this.recyclerViewAdapter.update((ArrayList<TimelineEntry>) timeline);
   }
+
 }

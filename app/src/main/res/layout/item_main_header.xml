@@ -7,6 +7,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
   <ImageButton
+    android:background="@color/white5"
     android:id="@+id/btn_main_header_setting"
     android:layout_height="@dimen/SIZE_24"
     android:layout_marginStart="@dimen/SIZE_20"
@@ -17,8 +18,9 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.5"
-    app:srcCompat="@color/gray2"/>
+    app:srcCompat="@drawable/ic_icon_settings"/>
   <ImageButton
+    android:background="@color/white5"
     android:id="@+id/btn_main_header_calendar"
     android:layout_height="@dimen/SIZE_24"
     android:layout_marginEnd="@dimen/SIZE_20"
@@ -29,8 +31,9 @@
     app:layout_constraintStart_toEndOf="@+id/imageView_main_header_chatty"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.5"
-    app:srcCompat="@color/gray2"/>
+    app:srcCompat="@drawable/ic_icon_calendar"/>
   <ImageView
+    android:background="@color/white5"
     android:id="@+id/imageView_main_header_chatty"
     android:layout_height="@dimen/SIZE_24"
     android:layout_width="@dimen/SIZE_140"
@@ -40,5 +43,5 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.5"
-    app:srcCompat="@color/main_purple"/>
+    app:srcCompat="@drawable/ic_chatty_main_header"/>
 </android.support.constraint.ConstraintLayout>

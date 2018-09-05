@@ -27,6 +27,9 @@ public class WriteActivity extends AppCompatActivity{
   @BindView(R.id.button_timeline_left)
   public ImageButton backButton;
 
+  @BindView(R.id.button_timeline_right)
+  public ImageButton doneButton;
+
   @BindView(R.id.recyclerView_dialogue)
   public RecyclerView recyclerView;
   public RecyclerView.Adapter dialogueAdapter;
@@ -55,6 +58,8 @@ public class WriteActivity extends AppCompatActivity{
 
     TextView textView = findViewById(R.id.textView_timeline_title);
     textView.setText(WRITE_TITLE);
+
+    doneButton.setImageResource(R.drawable.ic_icon_done);
   }
 
   private void loadDependencies() {

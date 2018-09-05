@@ -1,8 +1,13 @@
 package com.chatty.android.chattyClient.presenter.main;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
+import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedPresenter;
 import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.model.TimelineEntry;
@@ -15,7 +20,7 @@ import com.chatty.android.chattyClient.view.write.WriteActivity;
 
 public class MainPresenter implements ExtendedPresenter<State> {
   private MainActivity view;
-
+  private static Integer floatingCloseNum = 0;
   private MainPresenter(MainActivity view) {
     this.view = view;
   }
@@ -47,8 +52,15 @@ public class MainPresenter implements ExtendedPresenter<State> {
   }
 
   private void handleClickWriteButton(View v) {
-    Intent intent = new Intent(this.view, WriteActivity.class);
-    view.startActivity(intent);
+    if (floatingCloseNum==0) {
+     view.floatingClose();
+     Intent intent = new Intent(this.view, WriteActivity.class);
+     view.startActivity(intent);
+     floatingCloseNum++;
+    }
+    else{
+      Log.e("floating Close check", String.valueOf(floatingCloseNum));
+    }
   }
 
   public Object stateListener(State state) {
