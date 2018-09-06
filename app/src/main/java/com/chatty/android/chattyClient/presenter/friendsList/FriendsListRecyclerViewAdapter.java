@@ -43,9 +43,9 @@ public class FriendsListRecyclerViewAdapter extends RecyclerView.Adapter<Friends
     holder.textViewName.setText(friendItemEntry.getName());
     holder.textViewBio.setText(friendItemEntry.getBio());
     holder.textViewDate.setText(friendItemEntry.getCreated_at());
-
+    String imageUrl = "http://13.125.168.50:1432" + friendItemEntry.getProfile_image();
     Glide.with(context)
-      .load(friendItemEntry.getProfile_image())
+      .load(imageUrl)
       .into(holder.imageViewProfile);
   }
 

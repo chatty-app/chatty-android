@@ -3,6 +3,7 @@ package com.chatty.android.chattyClient.api;
 import com.chatty.android.chattyClient.model.request.ChatRequest;
 import com.chatty.android.chattyClient.model.request.NewPartnerRequest;
 import com.chatty.android.chattyClient.model.response.ChatResponse;
+import com.chatty.android.chattyClient.model.response.FriendItemResponse;
 import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
 import com.chatty.android.chattyClient.model.response.DiaryResponse;
 import com.chatty.android.chattyClient.model.response.TimelineResponse;
@@ -47,4 +48,7 @@ public interface ChattyApiDefinition {
     @Part
     MultipartBody.Part profile_image
   );
+
+  @GET("/chatty_users/partners/")
+  Call<FriendItemResponse> getFriendsList();
 }

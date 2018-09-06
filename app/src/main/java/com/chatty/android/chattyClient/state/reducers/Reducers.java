@@ -2,9 +2,11 @@ package com.chatty.android.chattyClient.state.reducers;
 
 import com.chatty.android.chattyClient.constants.ActionType;
 import com.chatty.android.chattyClient.externalModules.StateManager.Action;
+import com.chatty.android.chattyClient.model.FriendItemEntry;
 import com.chatty.android.chattyClient.model.PartnerProfileDetailEntry;
 import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.model.TimelineEntry;
+import com.chatty.android.chattyClient.model.response.FriendItemResponse;
 import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
 import com.chatty.android.chattyClient.model.Diary;
 import com.chatty.android.chattyClient.model.response.DiaryResponse;
@@ -48,6 +50,23 @@ public class Reducers {
         DiaryResponse diaryResponse = (DiaryResponse) action.getPayload().get("diary");
         ArrayList<Diary> diaryList = makeDiary(diaryResponse);
         state.setDiaries(diaryList);
+        return state;
+      case ActionType.REQUEST_GET_FRIENDS_LIST_SUCCESS:
+        FriendItemResponse friendItemResponse = (FriendItemResponse) action.getPayload().get("friendsList");
+        List<FriendItemEntry> friendItemEntries = friendItemResponse
+          .partners
+          .stream()
+          .map((friendItem) -> {
+            FriendItemEntry entry = new FriendItemEntry(
+              friendItem.profile_image,
+              friendItem.name,
+              friendItem.bio,
+              friendItem.created_at
+            );
+            return entry;
+          })
+          .collect(Collectors.toList());
+        state.setFriends(friendItemEntries);
         return state;
       default:
         return state;

@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.model.FriendItemEntry;
@@ -33,6 +35,18 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
   @BindView(R.id.recyclerView_profile_list)
   public RecyclerView recyclerViewProfileList;
 
+  @BindView(R.id.imageView_profile_now)
+  public ImageView imageViewProfileNow;
+
+  @BindView(R.id.textView_profile_name_now)
+  public TextView textViewProfileNameNow;
+
+  @BindView(R.id.textView_profile_bio_now)
+  public TextView textViewProfileBioNow;
+
+  @BindView(R.id.textView_profile_date_now)
+  public TextView textViewProfileDateNow;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -48,15 +62,14 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
 
   public void render() {
     this.renderHeader();
-    this.renderProfileList();
+
   }
 
-  private void renderProfileList() {
-//    TODO: 서버 통신을 통해 List<FriendItemEntry>를 받아온다.
-//    List<FriendItemEntry> dummy = new ArrayList<>();
-//    recyclerViewProfileList.setLayoutManager(new LinearLayoutManager(this));
-//    friendsListRecyclerViewAdapter = new FriendsListRecyclerViewAdapter(dummy, getApplicationContext());
-//    recyclerViewProfileList.setAdapter(friendsListRecyclerViewAdapter);
+  private void renderProfileList(List<FriendItemEntry> _friendsList) {
+    List<FriendItemEntry> friendsList = _friendsList;
+    recyclerViewProfileList.setLayoutManager(new LinearLayoutManager(this));
+    friendsListRecyclerViewAdapter = new FriendsListRecyclerViewAdapter(friendsList, getApplicationContext());
+    recyclerViewProfileList.setAdapter(friendsListRecyclerViewAdapter);
   }
 
   private void renderHeader() {
@@ -82,7 +95,24 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
 
   @Override
   public void update(FriendsListProps p) {
+    List<FriendItemEntry> friendsList = p.friendsList;
+    this.renderProfileList(friendsList);
+    if (friendsList.size() > 0 ) {
+      FriendItemEntry friendItemEntry = p.friendsList.get(0);
+      renderProfileNow(friendItemEntry);
+    }
+  }
 
+  public void renderProfileNow(FriendItemEntry _friendItem) {
+    FriendItemEntry friendItem = _friendItem;
+
+    textViewProfileNameNow.setText(friendItem.getName());
+    textViewProfileBioNow.setText(friendItem.getBio());
+    textViewProfileDateNow.setText(friendItem.getCreated_at());
+    String imageUrl = "http://13.125.168.50:1432" + friendItem.getProfile_image();
+    Glide.with(getApplicationContext())
+      .load(imageUrl)
+      .into(this.imageViewProfileNow);
   }
 
 }

@@ -10,11 +10,13 @@ public class State {
   PartnerProfileDetailEntry partnerProfileDetail;
   List<TimelineEntry> timeline;
   ArrayList<Diary> diaries;
+  List<FriendItemEntry> friends;
 
   public State() {
     this.partnerProfileDetail = new PartnerProfileDetailEntry();
     this.timeline = new ArrayList<>();
     this.diaries = new ArrayList<>();
+    this.friends = new ArrayList<>();
   }
 
   public PartnerProfileDetailEntry getPartnerProfileDetail() {
@@ -33,6 +35,8 @@ public class State {
     return diaries;
   }
 
+  public List<FriendItemEntry> getFriends() { return friends; }
+
   public void setTimeline(List<TimelineEntry> timeline) {
     this.timeline = timeline;
   }
@@ -40,10 +44,13 @@ public class State {
     this.diaries = diaries;
   }
 
+  public void setFriends(List<FriendItemEntry> friends) { this.friends = friends; }
+
   public State clone() {
     State instance = new State();
     instance.timeline = this.timeline;
     instance.diaries = this.diaries;
+    instance.friends = this.friends;
     return instance;
   }
 

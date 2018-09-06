@@ -1,11 +1,14 @@
 package com.chatty.android.chattyClient.state.action;
 
+import android.util.Log;
+
 import com.chatty.android.chattyClient.api.ChattyApi;
 import com.chatty.android.chattyClient.constants.ActionType;
 import com.chatty.android.chattyClient.externalModules.StateManager.Action;
 import com.chatty.android.chattyClient.externalModules.StateManager.StateManager;
 import com.chatty.android.chattyClient.model.request.NewPartnerRequest;
 import com.chatty.android.chattyClient.model.response.ChatResponse;
+import com.chatty.android.chattyClient.model.response.FriendItemResponse;
 import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
 
 import okhttp3.MultipartBody;
@@ -70,5 +73,28 @@ public class PartnerAction {
     );
 
     return partnerProfileDetailResponse;
+  }
+
+  public static StateManager.DispatcherMiddleware requestGetFriendsList() {
+    return (dispatch) -> {
+      dispatch.run(Action.of(ActionType.REQUEST_GET_FRIENDS_LIST));
+      ChattyApi.getApi().getFriendsList()
+        .enqueue(new Callback<FriendItemResponse>() {
+          @Override
+          public void onResponse(Call<FriendItemResponse> call, Response<FriendItemResponse> response) {
+            FriendItemResponse friendItemResponse = response.body();
+            dispatch.run(Action.of(ActionType.REQUEST_GET_FRIENDS_LIST_SUCCESS)
+              .payloadAdd("friendsList", friendItemResponse));
+          }
+
+          @Override
+          public void onFailure(Call<FriendItemResponse> call, Throwable t) {
+            dispatch.run(Action.of(ActionType.REQUEST_GET_FRIENDS_LIST_ERROR)
+            .payloadAdd("error",t));
+
+            Log.e("ERROR", String.valueOf(t));
+          }
+        });
+    };
   }
 }
