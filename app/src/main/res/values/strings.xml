@@ -30,4 +30,5 @@
   <string name="SETTING_PROFILE_MAIN_STARTDATE">The first day we met</string>
   <string name="text_emotion_question">How did you feel today?</string>
   <string name="text_emotion_button">OK</string>
+  <string name="SPLASH_COPYRIGHT">© 2018. Vacation homework.\nAll rights reserved.</string>
 </resources>

@@ -45,4 +45,7 @@ dependencies {
 
     implementation 'gun0912.ted:tedbottompicker:1.2.6'
     implementation 'gun0912.ted:tedpermission:2.2.1'
+    
+    implementation 'com.daimajia.easing:library:2.0@aar'
+    implementation 'com.daimajia.androidanimations:library:2.3@aar'
 }
