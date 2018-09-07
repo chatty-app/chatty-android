@@ -62,7 +62,7 @@ public class DiaryDetailActivity extends AppCompatActivity implements ExtendedVi
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Contract.connect(this, DiaryDetailPresenter.class, savedInstanceState);
+    Contract.connect(this, DiaryDetailPresenter.class);
   }
 
   @Override
