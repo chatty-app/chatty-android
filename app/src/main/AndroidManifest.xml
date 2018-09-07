@@ -23,8 +23,14 @@
       android:name=".view.diaryDetail.DiaryDetailActivity"
       android:clearTaskOnLaunch="true"
       android:launchMode="singleTask" />
-    <activity android:name=".view.friendsSetting.FriendsSettingActivity" />
-    <activity android:name=".view.friendsList.FriendsListActivity"/>
+    <activity
+      android:name=".view.friendsSetting.FriendsSettingActivity"
+      android:clearTaskOnLaunch="true"
+      android:launchMode="singleTask" />
+    <activity
+      android:name=".view.friendsList.FriendsListActivity"
+      android:clearTaskOnLaunch="true"
+      android:launchMode="singleTask" />
     <activity android:name=".view.main.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />

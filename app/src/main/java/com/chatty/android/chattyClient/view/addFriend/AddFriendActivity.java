@@ -3,9 +3,14 @@ package com.chatty.android.chattyClient.view.addFriend;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.chatty.android.chattyClient.App;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.module.ImagePicker;
@@ -31,6 +37,8 @@ import gun0912.tedbottompicker.TedBottomPicker;
 
 public class AddFriendActivity extends AppCompatActivity implements ExtendedView<AddFriendActivityProps>, ImagePicker {
   private static String HEADER_TITLE = "Add Friend";
+  private Uri imageUri;
+  private boolean hasName = false;
   private boolean isSubmitReady = false;
   AddFriendPresenter presenter;
 
@@ -69,13 +77,51 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
       p.handleClickImageButtonBack.apply(this::finish));
 
     this.imageViewProfile.setOnClickListener(
-      p.handleClickImageViewProfile.apply(() -> {}));
+      p.handleClickImageViewProfile.apply(() -> {
+        this.profileImageButtonAction();
+      }));
 
     this.imageViewAddProfileButton.setOnClickListener(
-      p.handleClickImageViewProfile.apply(() -> {}));
+      p.handleClickImageViewProfile.apply(() -> {
+        this.profileImageButtonAction();
+      }));
 
     this.buttonAddProfile.setOnClickListener(
-      p.handleClickButtonAddProfile.apply(this));
+      p.handleClickButtonAddProfile.apply(() -> {
+        if (isSubmitReady) {
+          this.sendProfileAction();
+        }
+      }));
+
+    this.editTextProfileName.addTextChangedListener(new TextWatcher() {
+      @Override
+      public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        updateSubmitButton();
+      }
+
+      @Override
+      public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        if (charSequence.toString().length() >0) {
+          hasName = true;
+        } else {
+          hasName = false;
+        }
+      }
+
+      @Override
+      public void afterTextChanged(Editable editable) {
+
+      }
+    });
+  }
+
+  private void sendProfileAction() {
+    Log.e("ddddddd", "dddddfdfdfd");
+    SharedPreferences userPreference = getSharedPreferences(App.USER_DATA, MODE_PRIVATE);
+    SharedPreferences.Editor editor = userPreference.edit();
+    editor.putBoolean(App.HAS_FRIEND, true);
+    editor.commit();
+    finish();
   }
 
   private void profileImageButtonAction() {
@@ -86,15 +132,6 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   @Override
   public void update(AddFriendActivityProps p) {
 
-  }
-
-  public void activateSubmitButton(boolean isSubmitReady) {
-    this.isSubmitReady = isSubmitReady;
-    if(this.isSubmitReady) {
-      buttonAddProfile.setBackgroundResource(R.color.main_purple);
-    } else {
-      buttonAddProfile.setBackgroundResource(R.color.gray5);
-    }
   }
 
   @Override
@@ -122,14 +159,27 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   public void initImagePicker() {
     TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(getApplicationContext())
       .setOnImageSelectedListener(uri ->
-        presenter.selectImage(uri)
+        updateProfile(uri)
       ).create();
   tedBottomPicker.show(getSupportFragmentManager());
   }
 
   public void updateProfile(Uri uri) {
+    this.imageUri = uri;
     Glide.with(getApplicationContext())
-      .load(uri)
+      .load(this.imageUri)
       .into(this.imageViewProfile);
+    updateSubmitButton();
+  }
+
+  private void updateSubmitButton() {
+    boolean hasImage = TextUtils.isEmpty(String.valueOf(this.imageUri));
+    if (!hasImage && hasName) {
+      isSubmitReady = true;
+      buttonAddProfile.setBackgroundResource(R.color.main_purple);
+    } else {
+      isSubmitReady = false;
+      buttonAddProfile.setBackgroundResource(R.color.gray1);
+    }
   }
 }

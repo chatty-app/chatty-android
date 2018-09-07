@@ -11,8 +11,8 @@ import com.chatty.android.chattyClient.state.reducers.Reducers;
 public class App extends Application {
   public static final String USER_DATA = "USER_DATA";
   public static final String HAS_FRIEND = "HAS_FRIEND";
-//  public static SharedPreferences userPreference;
-//  public static boolean isFriend;
+  public static SharedPreferences userPreference;
+  public static boolean isFriend;
 
   @Override
   public void onCreate() {

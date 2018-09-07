@@ -2,12 +2,12 @@ package com.chatty.android.chattyClient.model.response;
 
 public class PartnerProfileDetailResponse {
   public int id;
-  public String profileImage;
+  public String profile_image;
   public String name;
   public String bio;
   public int diaryCount;
   public int daysTogether;
-  public String createDate;
+  public String created_at;
 
   public PartnerProfileDetailResponse(
     int id,
@@ -19,12 +19,12 @@ public class PartnerProfileDetailResponse {
     String createDate
   ) {
     this.id = id;
-    this.profileImage = profileImage;
+    this.profile_image = profileImage;
     this.name = name;
     this.bio = bio;
     this.diaryCount = diaryCount;
     this.daysTogether = daysTogether;
-    this.createDate = createDate;
+    this.created_at = createDate;
   }
 
   public int getId() {
@@ -36,11 +36,11 @@ public class PartnerProfileDetailResponse {
   }
 
   public String getProfileImage() {
-    return profileImage;
+    return profile_image;
   }
 
   public void setProfileImage(String profileImage) {
-    this.profileImage = profileImage;
+    this.profile_image = profileImage;
   }
 
   public String getName() {
@@ -76,10 +76,10 @@ public class PartnerProfileDetailResponse {
   }
 
   public String getCreateDate() {
-    return createDate;
+    return created_at;
   }
 
   public void setCreateDate(String createDate) {
-    this.createDate = createDate;
+    this.created_at = createDate;
   }
 }

@@ -25,18 +25,20 @@ import java.util.function.Supplier;
 import okhttp3.MultipartBody;
 
 public class AddFriendPresenter implements ExtendedPresenter<State> {
-//  private boolean isProfile = false;
-//  private boolean isName = false;
-//  private MultipartBody.Part profileImage;
+  private AddFriendActivityProps props;
 
   public AddFriendPresenter(AddFriendActivity addFriendActivity) {
     StateManagerWrapper.subscribe(this::stateListener);
-    AddFriendActivityProps props = new AddFriendActivityProps();
+    this.props = new AddFriendActivityProps();
     props.handleClickImageButtonBack = this::handleClickImageButtonBack;
     props.handleClickImageViewProfile = this::handleClickImageViewProfile;
     props.handleClickButtonAddProfile = this::handleClickButtonAddProfile;
 
     addFriendActivity.initialRender(props);
+  }
+
+  private View.OnClickListener handleClickButtonAddProfile(Runnable r) {
+    return (v) -> r.run();
   }
 
   public Object stateListener(State state) {
@@ -60,64 +62,5 @@ public class AddFriendPresenter implements ExtendedPresenter<State> {
       boolean hasFreind = StateManagerWrapper.getState().hasFriend;
       activity.startActivity(new Intent(activity, FriendsSettingActivity.class));
     };
-  }
-
-  private TextWatcher handleChangeText() {
-    return new TextWatcher() {
-      @Override
-      public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-      }
-
-      @Override
-      public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (s.toString().length() > 0) {
-
-        }
-      }
-
-      @Override
-      public void afterTextChanged(Editable s) {
-      }
-    };
-  }
-
-  public void validateName(EditText editTextProfileName) {
-//    EditText profileName = editTextProfileName;
-//    profileName.addTextChangedListener(new TextWatcher() {
-//      @Override
-//      public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//      }
-//
-//      private void checkSubmitButton() {
-//        if(isProfile && isName) {
-//          view.activateSubmitButton(true);
-//        } else {
-//          view.activateSubmitButton(false);
-//        }
-//      }
-//
-//      @Override
-//      public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//        if (charSequence.toString().length() > 0) {
-//          isName = true;
-//        } else {
-//          isName = false;
-//        }
-//        this.checkSubmitButton();
-//      }
-//
-//      @Override
-//      public void afterTextChanged(Editable editable) {
-//      }
-//    });
-  }
-
-  class LocalState {
-
-  }
-
-  public void selectImage(Uri uri) {
-//    Uri currentImage = uri;
-//    view.updateProfile(uri);
   }
 }

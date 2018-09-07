@@ -91,4 +91,17 @@
     app:layout_constraintTop_toBottomOf="@id/textView_profile_list"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/floatingActionButton_app_profile"
+    android:backgroundTint="@color/main_purple"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_icon_add"
+    android:layout_marginBottom="@dimen/SIZE_20"
+    android:layout_marginEnd="@dimen/SIZE_20"
+    app:fabSize="normal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    />
 </android.support.constraint.ConstraintLayout>
