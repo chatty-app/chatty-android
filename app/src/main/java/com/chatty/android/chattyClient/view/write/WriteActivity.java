@@ -40,7 +40,7 @@ public class WriteActivity extends AppCompatActivity{
   public EditText writeInputEditText;
 
   @BindView(R.id.button_writeSubmit)
-  public Button writeSubmitButton;
+  public ImageButton writeSubmitButton;
 
   public List<ChatBalloon> chatBalloons;
 

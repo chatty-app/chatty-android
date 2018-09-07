@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.Props;
+import com.chatty.android.chattyClient.module.Contract;
 import com.chatty.android.chattyClient.presenter.calendar.CalendarPresenter;
 import com.chatty.android.chattyClient.view.main.MainActivity;
 
@@ -25,12 +26,8 @@ public class CalendarActivity extends AppCompatActivity implements ExtendedView<
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    Contract.connect(this, CalendarPresenter.class);
   }
-
-  public void render() {
-    renderBackButton();
-  }
-
   private void renderBackButton() {
     backButton.setOnClickListener(view -> {
         finish();
@@ -42,10 +39,11 @@ public class CalendarActivity extends AppCompatActivity implements ExtendedView<
     setContentView(R.layout.activity_calendar);
     ButterKnife.bind(this);
 
-    Intent intent = this.getIntent();
-    String message = intent.getStringExtra(MainActivity.HEADER_TITLE);
+    String message = this.getIntent().getStringExtra(MainActivity.HEADER_TITLE);
     TextView textView = findViewById(R.id.textView_timeline_title);
     textView.setText(message);
+
+    renderBackButton();
   }
 
   @Override
