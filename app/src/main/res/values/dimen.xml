@@ -84,4 +84,10 @@
   <dimen name="size_19dp">19dp</dimen>
   <dimen name="text_size_10sp">10sp</dimen>
   <dimen name="SIZE_15">15dp</dimen>
+  <dimen name="SIZE_36">36dp</dimen>
+  <dimen name="SIZE_7">7dp</dimen>
+  <dimen name="SIZE_17">17dp</dimen>
+  <dimen name="text_size_8sp">8sp</dimen>
+  <dimen name="SIZE_52">52dp</dimen>
+  <dimen name="SIZE_38">38dp</dimen>
 </resources>

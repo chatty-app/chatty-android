@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="280dp"
+  android:layout_height="176dp"
+  android:background="@drawable/layout_circle3"
+  tools:context=".view.write.emotion.EmotionActivity">
+
+  <TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/SIZE_24"
+    android:layout_marginTop="@dimen/SIZE_16"
+    android:fontFamily="sans-serif-medium"
+    android:text="@string/text_emotion_question"
+    android:textColor="@color/black0"
+    android:textSize="20sp"
+    android:textStyle="normal"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/emotion_recycler_view"
+    android:layout_width="@dimen/match_constraint"
+    android:layout_height="@dimen/SIZE_52"
+    android:layout_marginEnd="@dimen/SIZE_15"
+    android:layout_marginTop="@dimen/SIZE_18"
+    android:layout_marginStart="@dimen/SIZE_15"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+
+  <Button
+    android:id="@+id/button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:background="@color/white5"
+    android:backgroundTint="@color/white5"
+    android:fontFamily="sans-serif-medium"
+    android:onClick="ViewClose"
+    android:text="@string/text_emotion_button"
+    android:textColor="@color/black0"
+    android:textSize="@dimen/text_size_16sp"
+    android:textStyle="normal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+</android.support.constraint.ConstraintLayout>

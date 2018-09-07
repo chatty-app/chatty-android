@@ -1,5 +1,6 @@
 package com.chatty.android.chattyClient.view.write;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.model.ChatBalloon;
 import com.chatty.android.chattyClient.presenter.write.DialogueAdapter;
 import com.chatty.android.chattyClient.presenter.write.WritePresenter;
+import com.chatty.android.chattyClient.view.write.emotion.EmotionActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,6 +93,10 @@ public class WriteActivity extends AppCompatActivity{
   private void renderBackButton() {
     backButton.setOnClickListener(view -> {
       finish();
+    });
+    this.doneButton.setOnClickListener((view) -> {
+      Intent intent = new Intent(this, EmotionActivity.class);
+      startActivity(intent);
     });
   }
 }

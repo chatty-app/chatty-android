@@ -44,8 +44,7 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/ic_icon_add"/>
-
+      app:srcCompat="@drawable/ic_add_picture"/>
     <EditText
       android:background="@drawable/layout_chatbox"
       android:id="@+id/editText_writeInput"
@@ -60,18 +59,17 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/btn_write_plus"
       app:layout_constraintTop_toTopOf="parent"/>
-    <Button
-      android:backgroundTint="@color/white3"
+    <ImageButton
+      android:background="@color/white3"
       android:id="@+id/button_writeSubmit"
       android:layout_height="@dimen/SIZE_24"
       android:layout_marginBottom="@dimen/SIZE_4"
       android:layout_marginEnd="@dimen/SIZE_8"
       android:layout_marginTop="@dimen/SIZE_4"
       android:layout_width="@dimen/SIZE_24"
-      android:textColor="@color/black3"
       app:layout_constraintBottom_toBottomOf="@+id/editText_writeInput"
       app:layout_constraintEnd_toEndOf="@+id/editText_writeInput"
       app:layout_constraintTop_toTopOf="@+id/editText_writeInput"
-      app:srcCompat="@drawable/ic_icon_next"/>
+      app:srcCompat="@drawable/ic_send"/>
   </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

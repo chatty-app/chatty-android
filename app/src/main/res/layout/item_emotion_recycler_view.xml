@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="@dimen/SIZE_50"
+  android:layout_height="@dimen/SIZE_52">
+
+  <ImageView
+    android:id="@+id/image_emotion_recycler_view"
+    android:layout_width="@dimen/SIZE_36"
+    android:layout_height="@dimen/SIZE_36"
+    android:layout_centerVertical="true"
+    android:layout_marginEnd="@dimen/SIZE_7"
+    android:layout_marginStart="7dp"
+    android:src="@drawable/ic_icon_emotion_angry"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.5" />
+
+  <!--<ImageView-->
+    <!--android:id="@+id/image_emotion_recycler_view2"-->
+    <!--android:layout_width="@dimen/SIZE_38"-->
+    <!--android:layout_height="@dimen/SIZE_38"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginEnd="@dimen/SIZE_7"-->
+    <!--android:layout_marginStart="7dp"-->
+    <!--android:visibility="invisible"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.5"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+  <TextView
+    android:id="@+id/text_emotion_recycler_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_marginTop="@dimen/SIZE_7"
+    android:fontFamily="sans-serif"
+    android:gravity="center_horizontal"
+    android:textColor="@color/black0"
+    android:textSize="@dimen/text_size_8sp"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/image_emotion_recycler_view"
+    tools:text="Sentimental"/>
+
+</android.support.constraint.ConstraintLayout>

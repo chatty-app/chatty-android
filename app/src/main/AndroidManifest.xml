@@ -3,8 +3,8 @@
   package="com.chatty.android.chattyClient">
 
   <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
   <application
     android:name=".App"
@@ -23,6 +23,7 @@
       android:name=".view.diaryDetail.DiaryDetailActivity"
       android:clearTaskOnLaunch="true"
       android:launchMode="singleTask" />
+
     <activity
       android:name=".view.friendsSetting.FriendsSettingActivity"
       android:clearTaskOnLaunch="true"
@@ -31,6 +32,7 @@
       android:name=".view.friendsList.FriendsListActivity"
       android:clearTaskOnLaunch="true"
       android:launchMode="singleTask" />
+
     <activity android:name=".view.main.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -43,6 +45,12 @@
       android:clearTaskOnLaunch="true"
       android:launchMode="singleTask" />
     <activity android:name=".view.write.WriteActivity" />
+    <activity
+      android:name=".view.write.emotion.EmotionActivity"
+      android:theme="@android:style/Theme.Dialog">
+    </activity>
+
+
   </application>
 
 </manifest>

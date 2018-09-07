@@ -11,6 +11,8 @@
   </style>
 
   <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <!--<item name="android:width">280dp</item>-->
+    <!--<item name="android:height">176dp</item>-->
     <item name="colorAccent">@color/black0</item>
     <item name="android:windowMinWidthMinor">80%</item>
     <item name="android:windowBackground">@drawable/layout_alert</item>
