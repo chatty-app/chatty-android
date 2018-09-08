@@ -45,7 +45,9 @@ public class Reducers {
               content = content + answer.label + " ";
             }
             entry.setContent(content);
-            entry.setImgUrl(diary.answers.get(0).image);
+            if (diary.answers.size() > 0) {
+              entry.setImgUrl(diary.answers.get(0).image);
+            }
             return entry;
           })
           .collect(Collectors.toList());
@@ -64,6 +66,7 @@ public class Reducers {
         ArrayList<Diary> diaryList = makeDiary(diaryResponse);
         state.setDiaries(diaryList);
         return state;
+
       case ActionType.REQUEST_GET_FRIENDS_LIST_SUCCESS:
         FriendItemResponse friendItemResponse = (FriendItemResponse) action.getPayload().get("friendsList");
         List<FriendItemEntry> friendItemEntries = friendItemResponse
@@ -81,17 +84,20 @@ public class Reducers {
           .collect(Collectors.toList());
         state.setFriends(friendItemEntries);
         return state;
+
       case ActionType.REQUEST_GET_PARTNER_PROFILE_DETAIL_SUCCESS:
         PartnerProfileDetailResponse partnerProfileDetailResponse = (PartnerProfileDetailResponse) action.getPayload().get("partnerProfileDetail");
         PartnerProfileDetailEntry partnerProfileDetailEntry = makePartnerProfile(partnerProfileDetailResponse);
         state.setPartnerProfileDetail(partnerProfileDetailEntry);
         return state;
+
       case ActionType.REQUEST_START_CHAT_SUCCESS:
         ChatResponse chatResponse = (ChatResponse) action.getPayload().get("chat");
         ChatBalloon chatBalloon = new ChatBalloon();
         chatBalloon.speech = chatResponse.question.message;
         state.chatBalloons.add(chatBalloon);
         return state;
+
       default:
         return state;
     }
