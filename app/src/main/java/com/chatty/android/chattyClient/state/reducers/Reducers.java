@@ -40,8 +40,8 @@ public class Reducers {
             TimelineEntry entry = new TimelineEntry();
             entry.setDiaryId(diary.diary_id);
             entry.setDate(diary.created_at);
-//            entry.setContent(diary.answers.get(diary.answers.size() - 1).label);
-//            entry.setImgUrl(diary.answers.get(diary.answers.size() - 1).image);
+            entry.setContent(diary.answers.get(0).label);
+            entry.setImgUrl(diary.answers.get(0).image);
             return entry;
           })
           .collect(Collectors.toList());

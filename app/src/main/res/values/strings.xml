@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">vacation-homework-android</string>
+  <string name="app_name">Chatty</string>
   <string name="item_global_header_button_timeline_title_text">DIARY</string>
   <string name="main_text_Mypartner">My Friend</string>
   <string name="WRITE_SUBMIT">write</string>
@@ -13,7 +13,7 @@
   <string name="item_header_textview_date_text">date</string>
   <string name="item_header_textview_weather_text">weather</string>
   <string name="SETTING_MAIN_ADD_QUESTION">Add Question</string>
-  <string name="SETTING_MAIN_COPYRIGHT">© 2018. Vacation homework.</string>
+  <string name="SETTING_MAIN_COPYRIGHT">© 2018. Chatty.</string>
   <string name="SETTING_MAIN_FRIENDS_SETTING">Friends Setting</string>
   <string name="SETTING_MAIN_LINK_ACCOUNT">Link Account</string>
   <string name="SETTING_MAIN_NOTIFICATION">Notification</string>
@@ -30,5 +30,5 @@
   <string name="SETTING_PROFILE_MAIN_STARTDATE">The first day we met</string>
   <string name="text_emotion_question">How did you feel today?</string>
   <string name="text_emotion_button">OK</string>
-  <string name="SPLASH_COPYRIGHT">© 2018. Vacation homework.\nAll rights reserved.</string>
+  <string name="SPLASH_COPYRIGHT">© 2018. Chatty.\nAll rights reserved.</string>
 </resources>
