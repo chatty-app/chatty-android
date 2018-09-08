@@ -15,7 +15,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    layout="@layout/item_profile_avatar"/>
+    layout="@layout/item_profile_avatar2"/>
   <TextView
     android:fontFamily="sans-serif"
     android:id="@+id/textView_diary_partner_name"
@@ -24,7 +24,7 @@
     android:layout_marginTop="@dimen/SIZE_8"
     android:layout_width="wrap_content"
     android:letterSpacing="0.01"
-    android:text="@string/text_name"
+    android:text="떠려니"
     android:textColor="@color/black5"
     android:textSize="@dimen/text_size_16sp"
     android:textStyle="normal"
@@ -36,7 +36,7 @@
     android:layout_marginStart="@dimen/size_16dp"
     android:layout_width="wrap_content"
     android:letterSpacing="0.01"
-    android:text="@string/text_date"
+    android:text="2018.09.08"
     android:textColor="@color/black2"
     android:textSize="@dimen/text_size_14sp"
     android:textStyle="normal"
@@ -52,7 +52,8 @@
     android:layout_width="@dimen/SIZE_24"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@id/imageView_diary_emotion"
-    app:layout_constraintTop_toTopOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/ic_icon_weather_sunny"/>
   <ImageView
     android:id="@+id/imageView_diary_emotion"
     android:layout_height="@dimen/SIZE_24"
@@ -62,5 +63,6 @@
     android:layout_width="@dimen/SIZE_24"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/ic_icon_emotion_sentimental"/>
 </android.support.constraint.ConstraintLayout>

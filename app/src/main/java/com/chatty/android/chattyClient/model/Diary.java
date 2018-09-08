@@ -12,8 +12,15 @@ public class Diary extends ArrayList<Diary> {
   private Date emotion;*/
   private String question;
   private String answer;
+  public String partners;
+  public String weather;
 
-  public Diary (String question, String answer) {
+//  public DiaryHeader (String partners, String weather) {
+//
+//    this.partners = partners;
+//    this.weather = weather;
+//  }
+  public Diary(String question, String answer) {
     this.question = question;
     this.answer = answer;
   }
