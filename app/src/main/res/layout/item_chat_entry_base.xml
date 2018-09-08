@@ -7,8 +7,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
-  <ImageView
-    android:background="@drawable/layout_circle"
+  <include
     android:id="@+id/imageView_read_img"
     android:layout_height="@dimen/SIZE_40"
     android:layout_marginStart="@dimen/SIZE_20"
@@ -16,7 +15,9 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0" />
+    app:layout_constraintVertical_bias="0.0"
+    layout="@layout/item_profile_avatar2"/>
+
   <TextView
     android:id="@+id/textView_isRead"
     android:layout_height="@dimen/size_19dp"
