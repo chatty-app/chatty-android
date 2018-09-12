@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.chatty.android.chattyClient.R;
+import com.chatty.android.chattyClient.constants.Header;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.Props;
 import com.chatty.android.chattyClient.externalModules.Renderer.Renderer;
@@ -26,8 +27,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class WriteActivity extends AppCompatActivity implements ExtendedView<WriteActivityProps> {
-  private static final String WRITE_TITLE = "Write";
-
   @BindView(R.id.button_timeline_left)
   public ImageButton backButton;
 
@@ -35,9 +34,8 @@ public class WriteActivity extends AppCompatActivity implements ExtendedView<Wri
   public ImageButton doneButton;
 
   @BindView(R.id.recyclerView_dialogue)
-  public RecyclerView recyclerView;
-
-  public ChatDialogueAdapter chatDialogueAdapter;
+  public RecyclerView dialogueRecyclerView;
+  public ChatDialogueAdapter dialogueAdapter;
 
   @BindView(R.id.editText_writeInput)
   public EditText writeInputEditText;
@@ -48,43 +46,50 @@ public class WriteActivity extends AppCompatActivity implements ExtendedView<Wri
   @BindView(R.id.textView_timeline_title)
   public TextView timelineTitle;
 
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Contract.connect(this, WritePresenter.class);
   }
 
-  public void initView() {
-//    writeSubmitButton.setOnClickListener(presenter.handleClickWriteSubmit());
-  }
-
-  public void appendChatBalloon(ChatBalloon chatBalloon) {
-//    this.dialogueAdapter.notifyItemInserted(this.chatBalloons.size() - 1);
-//    this.recyclerView.scrollToPosition(this.chatBalloons.size() -1);
-  }
-
   private void renderBackButton() {
     this.backButton.setOnClickListener(view -> {
       finish();
     });
+  }
+
+  @Override
+  public void initialRender(WriteActivityProps writeActivityProps) {
+    this.setContentView(R.layout.activity_write);
+    ButterKnife.bind(this);
+
+    this.renderBackButton();
+    this.renderDoneButton();
+    this.renderDialogueRecyclerView(writeActivityProps);
+    this.renderSetTitle();
+    this.renderWriteSubmitButton(writeActivityProps);
+  }
+
+  private void renderDoneButton() {
+    this.doneButton.setImageResource(R.drawable.ic_icon_done);
     this.doneButton.setOnClickListener((view) -> {
       Intent intent = new Intent(this, EmotionActivity.class);
       startActivity(intent);
     });
   }
 
-  @Override
-  public void initialRender(WriteActivityProps writeActivityProps) {
-    setContentView(R.layout.activity_write);
-    ButterKnife.bind(this);
+  private void renderDialogueRecyclerView(WriteActivityProps writeActivityProps) {
+    this.dialogueRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    this.dialogueAdapter = new ChatDialogueAdapter(writeActivityProps.chatBalloons);
+    this.dialogueRecyclerView.setAdapter(dialogueAdapter);
+  }
 
-    this.renderBackButton();
+  private void renderSetTitle() {
+    this.timelineTitle.setText(Header.WRITE);
+  }
 
-    this.timelineTitle.setText(WRITE_TITLE);
-    this.doneButton.setImageResource(R.drawable.ic_icon_done);
-    this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    this.chatDialogueAdapter = new ChatDialogueAdapter(writeActivityProps.chatBalloons);
-    this.recyclerView.setAdapter(chatDialogueAdapter);
+  private void renderWriteSubmitButton(WriteActivityProps writeActivityProps) {
     this.writeSubmitButton.setOnClickListener((__) -> {
       writeActivityProps.handleClickWriteSubmitButton.accept(
         writeInputEditText.getText().toString()
@@ -104,8 +109,7 @@ public class WriteActivity extends AppCompatActivity implements ExtendedView<Wri
 
   private void updateChatBalloons(Object o) {
     ArrayList<ChatBalloon> chatBalloons = (ArrayList<ChatBalloon>) o;
-    this.chatDialogueAdapter.update(chatBalloons);
-    this.recyclerView.scrollToPosition(chatBalloons.size() -1);
+    this.dialogueAdapter.update(chatBalloons);
+    this.dialogueRecyclerView.scrollToPosition(chatBalloons.size() -1);
   }
 }
-
