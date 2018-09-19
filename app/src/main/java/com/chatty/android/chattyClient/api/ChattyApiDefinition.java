@@ -45,7 +45,7 @@ public interface ChattyApiDefinition {
   @GET("/chatty_users/partners/")
   Call<FriendItemResponse> getFriendsList();
 
-  @GET("/partners/profile/{partner_id}")
+  @GET("/partners/profile/{partner_id}/")
   Call<PartnerProfileDetailResponse> getPartnerProfileDetail(
     @Path("partner_id") int partner_id
   );

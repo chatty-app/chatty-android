@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.Props;
+import com.chatty.android.chattyClient.externalModules.Renderer.Renderer;
 import com.chatty.android.chattyClient.model.PartnerProfileDetailEntry;
 import com.chatty.android.chattyClient.module.Contract;
 import com.chatty.android.chattyClient.presenter.friendsList.FriendsListPresenter;
@@ -24,6 +25,8 @@ import com.chatty.android.chattyClient.view.friendsList.FriendsListActivity;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,9 +99,9 @@ public class FriendsSettingActivity extends AppCompatActivity implements Extende
     textView.setText(HEADER_TITLE);
   }
 
-  public void renderPartnerProfile(PartnerProfileDetailEntry partnerProfileDetail) {
-    PartnerProfileDetailEntry currentPartnerProfileDetail = partnerProfileDetail;
-    String profileImage = partnerProfileDetail.getProfileImage();
+  public void renderPartnerProfile(Object _partner) {
+    PartnerProfileDetailEntry currentPartnerProfileDetail = (PartnerProfileDetailEntry) _partner;
+    String profileImage = currentPartnerProfileDetail.getProfileImage();
 
     this.textViewProfileName.setText(currentPartnerProfileDetail.getName());
     this.textViewProfileBio.setText(currentPartnerProfileDetail.getBio());
@@ -118,10 +121,20 @@ public class FriendsSettingActivity extends AppCompatActivity implements Extende
   public void initialRender(FriendsSettingActivityProps friendsSettingActivityProps) {
     this.setContentView(R.layout.activity_friends_setting);
     ButterKnife.bind(this);
+    this.renderHeader();
   }
 
   @Override
+<<<<<<< HEAD
   public void update(Props props) {
-    this.renderHeader();
+=======
+  public void update(Props _props) {
+    FriendsSettingActivityProps props = (FriendsSettingActivityProps) _props;
+    Renderer.render(
+      this,
+      Arrays.asList(props.friendDetail),
+      this::renderPartnerProfile
+    );
+>>>>>>> d37591d8dde1a7391b1b96db905290f6c12da4f1
   }
 }
