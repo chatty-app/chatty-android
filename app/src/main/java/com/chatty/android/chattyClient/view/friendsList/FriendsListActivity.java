@@ -15,6 +15,7 @@ import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.Props;
 import com.chatty.android.chattyClient.model.FriendItemEntry;
+import com.chatty.android.chattyClient.module.Contract;
 import com.chatty.android.chattyClient.presenter.friendsList.FriendsListPresenter;
 import com.chatty.android.chattyClient.presenter.friendsList.FriendsListRecyclerViewAdapter;
 import com.chatty.android.chattyClient.view.addFriend.AddFriendActivity;
@@ -53,12 +54,14 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    construct();
+    Contract.connect(this, FriendsListPresenter.class);
   }
 
-  private void construct() {
+  @Override
+  public void initialRender(FriendsListActivityProps p) {
     setContentView(R.layout.activity_friends_list);
     ButterKnife.bind(this);
+    this.renderHeader();
   }
 
   private void renderProfileList(List<FriendItemEntry> _friendsList) {
@@ -89,11 +92,6 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
     this.imageButtonBack.setOnClickListener((__) -> {
       finish();
     });
-  }
-
-  @Override
-  public void initialRender(FriendsListActivityProps p) {
-    this.renderHeader();
   }
 
   @Override

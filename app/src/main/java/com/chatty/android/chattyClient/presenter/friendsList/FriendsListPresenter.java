@@ -6,6 +6,7 @@ import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedP
 import com.chatty.android.chattyClient.model.FriendItemEntry;
 import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.module.StateManagerWrapper;
+import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.chatty.android.chattyClient.view.friendsList.FriendsListActivityProps;
 import com.chatty.android.chattyClient.view.friendsList.FriendsListActivityState;
 
@@ -14,7 +15,15 @@ import java.util.ArrayList;
 public class FriendsListPresenter extends ExtendedPresenter<FriendsListActivityProps, FriendsListActivityState, State> {
   @Override
   public FriendsListActivityProps initiate() {
-    return null;
+    try {
+      StateManagerWrapper.dispatch(PartnerAction.requestGetFriendsList());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    FriendsListActivityProps props = new FriendsListActivityProps();
+    props.friendsList = StateManagerWrapper.getState().getFriends();
+    return props;
   }
 
   @Override
@@ -22,7 +31,7 @@ public class FriendsListPresenter extends ExtendedPresenter<FriendsListActivityP
     StateManagerWrapper.log(this.getClass().getSimpleName(), state);
 
     FriendsListActivityProps props = new FriendsListActivityProps();
-    props.friendsList = (ArrayList<FriendItemEntry>) state.getFriends();
+    props.friendsList = state.getFriends();
     return props;
   }
 }
