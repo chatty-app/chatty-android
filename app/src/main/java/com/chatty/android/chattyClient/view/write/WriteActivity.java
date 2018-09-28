@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -45,7 +46,6 @@ public class WriteActivity extends AppCompatActivity implements ExtendedView<Wri
 
   @BindView(R.id.textView_timeline_title)
   public TextView timelineTitle;
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +91,7 @@ public class WriteActivity extends AppCompatActivity implements ExtendedView<Wri
 
   private void renderWriteSubmitButton(WriteActivityProps writeActivityProps) {
     this.writeSubmitButton.setOnClickListener((__) -> {
-      writeActivityProps.handleClickWriteSubmitButton.accept(
-        writeInputEditText.getText().toString()
-      );
+      writeActivityProps.handleClickWriteSubmitButton.accept(this.writeInputEditText);
     });
   }
 

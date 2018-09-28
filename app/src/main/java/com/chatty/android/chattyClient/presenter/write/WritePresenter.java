@@ -1,6 +1,11 @@
 package com.chatty.android.chattyClient.presenter.write;
 
+import android.app.Activity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.chatty.android.chattyClient.api.ChattyApiDefinition;
 import com.chatty.android.chattyClient.api.ChattyApi;
@@ -49,13 +54,15 @@ public class WritePresenter extends ExtendedPresenter<WriteActivityProps, WriteA
     return props;
   }
 
-  public void handleClickWriteSubmit(String text) {
-    try {
-      String writeDiaryId = StateManagerWrapper.getState().writeDiaryId;
-      StateManagerWrapper.dispatch(ChatAction.requestAppendChat(writeDiaryId, text));
-    } catch (Exception e) {
-      e.printStackTrace();
+  public void handleClickWriteSubmit(EditText editText) {
+    if (!TextUtils.isEmpty(editText.getText())) {
+      try {
+        String writeDiaryId = StateManagerWrapper.getState().writeDiaryId;
+        StateManagerWrapper.dispatch(ChatAction.requestAppendChat(writeDiaryId, editText.getText().toString()));
+        editText.setText(null);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
   }
-
 }
