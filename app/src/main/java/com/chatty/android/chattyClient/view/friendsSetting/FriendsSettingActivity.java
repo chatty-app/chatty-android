@@ -125,9 +125,6 @@ public class FriendsSettingActivity extends AppCompatActivity implements Extende
   }
 
   @Override
-<<<<<<< HEAD
-  public void update(Props props) {
-=======
   public void update(Props _props) {
     FriendsSettingActivityProps props = (FriendsSettingActivityProps) _props;
     Renderer.render(
@@ -135,6 +132,5 @@ public class FriendsSettingActivity extends AppCompatActivity implements Extende
       Arrays.asList(props.friendDetail),
       this::renderPartnerProfile
     );
->>>>>>> d37591d8dde1a7391b1b96db905290f6c12da4f1
   }
 }
