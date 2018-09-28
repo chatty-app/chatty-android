@@ -135,15 +135,17 @@ public class MainActivity extends AppCompatActivity implements ExtendedView<Main
 
   private void updatePartner(Object _partner) {
     Partner partner = (Partner) _partner;
-    this.dayCount.setText(partner.days_together.toString());
-    this.dialogCount.setText(partner.diary_count.toString());
-    this.partnerName.setText(partner.name);
-    Glide.with(this)
-      .load(ChattyApi.BASE_URL.substring(0, ChattyApi.BASE_URL.length() - 1) + partner.imageUrl)
-      .into(this.profilerAvatarImage);
+    if (partner.name != null) {
+      this.dayCount.setText(partner.days_together.toString());
+      this.dialogCount.setText(partner.diary_count.toString());
+      this.partnerName.setText(partner.name);
+      Glide.with(this)
+        .load(ChattyApi.BASE_URL.substring(0, ChattyApi.BASE_URL.length() - 1) + partner.imageUrl)
+        .into(this.profilerAvatarImage);
 
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-    this.currentDate.setText(formatter.format(new Date()));
+      SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+      this.currentDate.setText(formatter.format(new Date()));
+    }
   }
 
   private void updateTimeLineView(
