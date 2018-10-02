@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout
   android:background="@drawable/layout_circle"
   android:elevation="@dimen/SIZE_2"
-  android:layout_height="@dimen/SIZE_130"
+  android:layout_height="110dp"
   android:layout_marginEnd="@dimen/SIZE_20"
   android:layout_marginStart="@dimen/SIZE_20"
   android:layout_width="match_parent"
