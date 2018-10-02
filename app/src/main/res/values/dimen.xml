@@ -8,6 +8,7 @@
   <dimen name="SIZE_5">5dp</dimen>
   <dimen name="SIZE_6">6dp</dimen>
   <dimen name="SIZE_8">8dp</dimen>
+  <dimen name="SIZE_10">10dp</dimen>
   <dimen name="SIZE_12">12dp</dimen>
   <dimen name="SIZE_13">13dp</dimen>
   <dimen name="SIZE_16">16dp</dimen>
@@ -30,7 +31,9 @@
   <dimen name="SIZE_96">96dp</dimen>
   <dimen name="SIZE_108">108dp</dimen>
   <dimen name="SIZE_120">120dp</dimen>
+  <dimen name="SIZE_130">130dp</dimen>
   <dimen name="SIZE_140">140dp</dimen>
+  <dimen name="SIZE_320">320dp</dimen>
   <dimen name="activity_main_global_header_layout_height">48dp</dimen>
   <dimen name="activity_main_floating_action_button_write_layout_margin">16dp</dimen>
   <dimen name="activity_write_recyclerview_dialogue_layout_height">0dp</dimen>

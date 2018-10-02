@@ -1,5 +1,6 @@
 <resources>
   <string name="app_name">Chatty</string>
+  <string name="DUMMY_TEXT">Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit, sed\ndo eiusmod tempor incididunt </string>
   <string name="item_global_header_button_timeline_title_text">DIARY</string>
   <string name="main_text_Mypartner">My Friend</string>
   <string name="WRITE_SUBMIT">write</string>

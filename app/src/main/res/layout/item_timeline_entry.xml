@@ -2,52 +2,44 @@
 <android.support.constraint.ConstraintLayout
   android:layout_height="@dimen/SIZE_90"
   android:layout_marginBottom="@dimen/size_10dp"
+  android:layout_marginEnd="@dimen/SIZE_20"
+  android:layout_marginStart="@dimen/SIZE_20"
   android:layout_marginTop="@dimen/size_10dp"
   android:layout_width="match_parent"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
-  <ImageView
+  <com.chatty.android.chattyClient.widget.TimelineImageView
     android:adjustViewBounds="true"
     android:id="@+id/imageView_timeline"
-    android:layout_height="match_parent"
-    android:layout_marginStart="@dimen/SIZE_20"
-    android:layout_marginBottom="15dp"
+    android:layout_height="@dimen/SIZE_90"
     android:layout_width="@dimen/SIZE_120"
     android:scaleType="centerCrop"
     android:src="@drawable/timeline_thumbnail_dummy"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"/>
   <TextView
     android:id="@+id/textView_timeline_date"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/SIZE_20"
-    android:layout_marginTop="@dimen/SIZE_6"
+    android:layout_marginTop="@dimen/SIZE_4"
     android:layout_width="wrap_content"
-    android:letterSpacing="0.5"
+    android:lineSpacingExtra="6sp"
     android:text="2018.07.20 FRI"
     android:textColor="@color/black0"
     android:textStyle="normal"
     app:layout_constraintStart_toEndOf="@id/imageView_timeline"
-    app:layout_constraintTop_toTopOf="parent"/>
+    app:layout_constraintTop_toTopOf="@id/imageView_timeline"/>
   <TextView
     android:id="@+id/textView_contents"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/size_8dp"
-    android:layout_marginEnd="@dimen/SIZE_24"
-    android:layout_marginStart="@dimen/SIZE_20"
     android:layout_marginTop="@dimen/size_8dp"
-    android:layout_width="220dp"
+    android:layout_width="@dimen/match_constraint"
+    android:maxLines="3"
+    android:text="@string/DUMMY_TEXT"
     android:textColor="@color/black0"
-    android:textSize="@dimen/text_size_12sp"
     android:textStyle="normal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0"
-    app:layout_constraintStart_toEndOf="@+id/imageView_timeline"
-    app:layout_constraintTop_toBottomOf="@+id/textView_timeline_date"
-    app:layout_constraintVertical_bias="0.5"
-    android:text="Lorem ipsum dolor sit amet,
-consectetur adipiscing elit, sed
-do eiusmod tempor incididunt "/>
+    android:textSize="@dimen/text_size_12sp"
+    app:layout_constraintStart_toStartOf="@+id/textView_timeline_date"
+    app:layout_constraintTop_toBottomOf="@+id/textView_timeline_date"/>
 </android.support.constraint.ConstraintLayout>
