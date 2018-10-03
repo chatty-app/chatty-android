@@ -1,24 +1,40 @@
 package com.chatty.android.chattyClient.presenter.write;
 
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
+import com.chatty.android.chattyClient.externalModules.ReduxJava.ReduxJava;
 import com.chatty.android.chattyClient.model.ChatBalloon;
+import com.chatty.android.chattyClient.view.write.WriteActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatDialogueAdapter extends RecyclerView.Adapter {
+  private String uri;
+  private Context context;
   private List<ChatBalloon> chatBalloons;
 
   public ChatDialogueAdapter(List<ChatBalloon> chatBalloons) {
     this.chatBalloons = chatBalloons;
+  }
+  public ChatDialogueAdapter(Context context, Uri uri) {
+    Log.e("야아아아아아ㅏ", String.valueOf(uri));
+    this.context = context;
+    this.uri= String.valueOf(uri);
+    Log.e("야아아아아아ㅏqqqww",this.uri);
   }
 
   public void update(ArrayList<ChatBalloon> chatBalloons) {
@@ -38,12 +54,16 @@ public class ChatDialogueAdapter extends RecyclerView.Adapter {
     }
   }
 
-  public class ChatEntrySelfViewHolder extends RecyclerView.ViewHolder {
+  public static class ChatEntrySelfViewHolder extends RecyclerView.ViewHolder {
     TextView textView;
+    ImageView imageView;
+//    ImageView imageView1;
 
     ChatEntrySelfViewHolder(View itemView) {
       super(itemView);
-      this.textView= itemView.findViewById(R.id.textView);
+      this.textView = itemView.findViewById(R.id.textView_self);
+      this.imageView = itemView.findViewById(R.id.imageView_send_image);
+//      this.imageView1 = imageView1.findViewById(R.id.imageView_send_image);
     }
   }
 
@@ -72,7 +92,6 @@ public class ChatDialogueAdapter extends RecyclerView.Adapter {
   @Override
   public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
     ChatBalloon chatBalloon = this.chatBalloons.get(position);
-    System.out.println("!!!" + chatBalloon);
 
     if (chatBalloon != null) {
       switch (holder.getItemViewType()) {
@@ -81,12 +100,20 @@ public class ChatDialogueAdapter extends RecyclerView.Adapter {
           ((ChatEntryPartnerViewHolder) holder).textView_isRead.setText(chatBalloon.username);
           break;
         case 2:
+          if (this.uri != null) {
+            ImageView image = ((ChatEntrySelfViewHolder) holder).imageView;
+            image.setVisibility(View.VISIBLE);
+            Log.e("se","시작");
+//            String imageUrl = "http://13.125.168.50:1432" + this.uri;
+            Glide.with(this.context)
+              .load(this.uri)
+              .into(image);
+          }
           ((ChatEntrySelfViewHolder) holder).textView.setText(chatBalloon.speech);
           break;
       }
     }
   }
-
   @Override
   public int getItemCount() {
     return this.chatBalloons.size();
