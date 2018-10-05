@@ -1,5 +1,7 @@
 package com.chatty.android.chattyClient.state.reducers;
 
+import android.util.Log;
+
 import com.chatty.android.chattyClient.constants.ActionType;
 import com.chatty.android.chattyClient.externalModules.ReduxJava.Action;
 import com.chatty.android.chattyClient.externalModules.ReduxJava.Reducer;

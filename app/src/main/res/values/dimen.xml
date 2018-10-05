@@ -33,6 +33,8 @@
   <dimen name="SIZE_120">120dp</dimen>
   <dimen name="SIZE_130">130dp</dimen>
   <dimen name="SIZE_140">140dp</dimen>
+  <dimen name="SIZE_150">150dp</dimen>
+  <dimen name="SIZE_270">270dp</dimen>
   <dimen name="SIZE_320">320dp</dimen>
   <dimen name="activity_main_global_header_layout_height">48dp</dimen>
   <dimen name="activity_main_floating_action_button_write_layout_margin">16dp</dimen>

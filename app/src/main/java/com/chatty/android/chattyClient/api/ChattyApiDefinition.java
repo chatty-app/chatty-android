@@ -39,7 +39,7 @@ public interface ChattyApiDefinition {
     @Body ChatRequest chatRequest
   );
 
-  @GET("/diary/detail/{diary_id}")
+  @GET("/diary/detail/{diary_id}/")
   Call<DiaryResponse> getDiaryDetail(
     @Path("diary_id") int diary_id
   );

@@ -12,60 +12,19 @@ public class Diary extends ArrayList<Diary> {
   private Date emotion;*/
   private String question;
   private String answer;
+  private String imageUrl;
   public String partners;
   public String weather;
 
-//  public DiaryHeader (String partners, String weather) {
-//
-//    this.partners = partners;
-//    this.weather = weather;
-//  }
-  public Diary(String question, String answer) {
+  public Diary(String question, String answer, String imageUrl) {
     this.question = question;
     this.answer = answer;
+    this.imageUrl = imageUrl;
   }
 
-  /*public String getProfileImage() {
-    return profileImage;
+  public String getQuestion() {
+    return question;
   }
-
-  public void setProfileImage(String profileImage) {
-    this.profileImage = profileImage;
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getDate() {
-    return date;
-  }
-
-  public void setDate(String date) {
-    this.date = date;
-  }
-
-  public String getWeather() {
-    return weather;
-  }
-
-  public void setWeather(Date date) {
-    this.weather = weather;
-  }
-
-  public Date getEmotion() {
-    return emotion;
-  }
-
-  public void setEmotion(Date date) {
-    this.emotion = emotion;
-  }*/
-
-  public String getQuestion() { return question;}
 
   public void setQuestion(String question) {
     this.question = question;
@@ -77,5 +36,13 @@ public class Diary extends ArrayList<Diary> {
 
   public void setAnswer(String answer) {
     this.answer = answer;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
+  }
+
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
   }
 }

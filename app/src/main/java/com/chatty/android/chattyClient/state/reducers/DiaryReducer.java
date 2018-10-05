@@ -58,7 +58,9 @@ public class DiaryReducer implements Reducer<State.Diary> {
       diaries.add(
         new Diary(
           diaryResponse.questions.get(i).message,
-          diaryResponse.answers.get(i).label));
+          diaryResponse.answers.get(i).label,
+          diaryResponse.answers.get(i).image)
+        );
     }
     return diaries;
   }

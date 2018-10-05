@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-  android:layout_height="match_parent"
-  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_width="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto">
   <ImageView
     android:id="@+id/profile_avatar_img"
     android:layout_height="@dimen/SIZE_40"
     android:layout_width="@dimen/SIZE_40"
-    android:src="@drawable/sample_profile"
+    android:scaleType="centerCrop"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"

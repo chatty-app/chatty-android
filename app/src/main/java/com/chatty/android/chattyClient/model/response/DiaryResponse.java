@@ -6,18 +6,18 @@ import java.util.List;
 public class DiaryResponse {
   public List<Question> questions;
   public List<Answer> answers;
-  public List<Partner> partners;
+  public Partner partner;
   public String weather;
   public String feeling;
-
+  public String create_at;
 
   public class Partner {
-     public Integer profile_image;
+     public String profile_image;
      public String name;
   }
 
   public class Question {
-    public Integer question_id;
+    public int question_id;
     public String message;
   }
 
@@ -25,6 +25,6 @@ public class DiaryResponse {
     public Date created_at;
     public String image;
     public String label;
-    public Integer question;
+    public int question;
   }
 }

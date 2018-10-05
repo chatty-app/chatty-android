@@ -77,7 +77,7 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
     List<FriendItemEntry> friendsList = friendsListActivityProps.friendsList;
     this.renderProfileList(friendsList);
     if (friendsList.size() > 0 ) {
-      FriendItemEntry friendItemEntry = friendsListActivityProps.friendsList.get(0);
+      FriendItemEntry friendItemEntry = friendsListActivityProps.friendsList.get(friendsListActivityProps.friendsList.size()-1);
       this.renderProfileNow(friendItemEntry);
     }
   }

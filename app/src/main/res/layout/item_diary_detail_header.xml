@@ -11,8 +11,7 @@
   <include
     android:id="@+id/image_diary_partner"
     android:layout_height="@dimen/SIZE_56"
-    android:layout_width="@dimen/match_constraint"
-    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_width="@dimen/SIZE_56"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     layout="@layout/item_profile_avatar2"/>
@@ -27,12 +26,13 @@
     android:text="떠려니"
     android:textColor="@color/black5"
     android:textSize="@dimen/text_size_16sp"
-    android:textStyle="normal"
-    app:layout_constraintStart_toEndOf="@+id/image_diary_partner"
-    app:layout_constraintTop_toTopOf="parent"/>
+    android:textStyle="bold"
+    app:layout_constraintStart_toEndOf="@id/image_diary_partner"
+    app:layout_constraintTop_toTopOf="@id/image_diary_partner"/>
   <TextView
     android:id="@+id/textView_diary_date"
     android:layout_height="@dimen/size_19dp"
+    android:layout_marginBottom="@dimen/SIZE_8"
     android:layout_marginStart="@dimen/size_16dp"
     android:layout_width="wrap_content"
     android:letterSpacing="0.01"
@@ -40,9 +40,8 @@
     android:textColor="@color/black2"
     android:textSize="@dimen/text_size_14sp"
     android:textStyle="normal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/image_diary_partner"
-    app:layout_constraintTop_toBottomOf="@+id/textView_diary_partner_name"/>
+    app:layout_constraintBottom_toBottomOf="@id/image_diary_partner"
+    app:layout_constraintStart_toEndOf="@id/image_diary_partner"/>
   <ImageView
     android:id="@+id/imageView_diary_weather"
     android:layout_height="@dimen/SIZE_24"
