@@ -6,17 +6,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.model.TimelineEntry;
 import com.chatty.android.chattyClient.widget.TimelineImageView;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
+import java.util.logging.Handler;
 
 public class TimelineRecyclerViewAdapter
   extends RecyclerView.Adapter<TimelineRecyclerViewAdapter.ViewHolder> {
@@ -59,20 +65,40 @@ public class TimelineRecyclerViewAdapter
 
   @Override
   public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    setFadeAnimation(holder.itemView, position);
     TimelineEntry entry = this.timelineEntries.get(position);
     String date = TimelineRecyclerViewAdapter.df.format(entry.getDate());
 
     holder.contents.setText(entry.getContent());
     holder.date.setText(date);
     holder.entry = entry;
+    ArrayList<String> imageUrls = new ArrayList<>();
+    imageUrls.add("http://www.rainbowfestival.co.kr/wp-content/uploads/2017/05/585be1aa1600002400bdf2a6-970x658.jpeg");
+    imageUrls.add("http://www.bseconomy.com/news/photo/201710/25251_3430_3838.jpg");
+    imageUrls.add("http://www.ccnnews.co.kr/news/photo/201803/107194_130618_2038.jpg");
+    imageUrls.add("https://ppss.kr/wp-content/uploads/2017/04/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C-8-540x245.png");
+    imageUrls.add("https://pds.joins.com/news/component/htmlphoto_mmdata/201810/03/797cb2a4-5b62-4f20-b5dd-4f72113920b6.jpg");
+    imageUrls.add("https://pds.joins.com/news/component/htmlphoto_mmdata/201810/03/38b35928-fb99-4f4a-920d-8d128096e630.jpg");
+    imageUrls.add("https://img.insight.co.kr/static/2017/02/09/700/95L8JYXY11YK1M16M8HP.jpg");
+    imageUrls.add("https://pbs.twimg.com/media/CfQH_n3WwAE7Z5B.jpg");
 
+    Random random = new Random();
+    int randomNum = random.nextInt(imageUrls.size());
     String thumbnailUrl = entry.imgUrl != null
       ? entry.imgUrl
-      : "https://msr7.net/images/flower-google-9.jpg";
+      : imageUrls.get(randomNum);
 
     Glide.with(view)
       .load(thumbnailUrl)
       .into(holder.thumbnail);
+  }
+
+  public void setFadeAnimation(View view, int position) {
+    int posNum = position;
+    int timer = (posNum < 4)? posNum * 200 + 500 : 1000;
+    YoYo.with(Techniques.FadeInUp)
+      .duration(timer)
+      .playOn(view);
   }
 
   @Override

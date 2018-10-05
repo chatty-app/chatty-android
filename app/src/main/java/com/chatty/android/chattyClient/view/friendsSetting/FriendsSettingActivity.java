@@ -18,6 +18,8 @@ import com.chatty.android.chattyClient.externalModules.Renderer.Renderer;
 import com.chatty.android.chattyClient.model.PartnerProfileDetailEntry;
 import com.chatty.android.chattyClient.presenter.Contract;
 import com.chatty.android.chattyClient.presenter.friendsSetting.FriendsSettingPresenter;
+import com.chatty.android.chattyClient.state.Store;
+import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.chatty.android.chattyClient.view.friendsList.FriendsListActivity;
 
 
@@ -61,6 +63,12 @@ public class FriendsSettingActivity extends AppCompatActivity implements Extende
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Contract.connect(this, FriendsSettingPresenter.class);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    Store.dispatch(PartnerAction.requestGetFriendsList());
   }
 
   private void renderHeader() {

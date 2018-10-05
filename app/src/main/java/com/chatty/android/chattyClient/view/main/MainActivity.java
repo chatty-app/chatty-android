@@ -1,5 +1,6 @@
 package com.chatty.android.chattyClient.view.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
