@@ -12,6 +12,7 @@ import com.chatty.android.chattyClient.model.response.FriendItemResponse;
 import com.chatty.android.chattyClient.model.response.PartnerProfileDetailResponse;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,7 +21,9 @@ public class PartnerAction {
   public static ReduxJava.DispatcherMiddleware requestGetPartnerProfileDetail() {
     return (dispatch) -> {
       dispatch.run(Action.of(ActionType.REQUEST_GET_PARTNER_PROFILE_DETAIL));
-      ChattyApi.getApi().getPartnerProfileDetail(1)
+//      TODO: 현재 최신 유저만 받아올 수 있게 되어있음. 추후 USERLIST 클릭 시 해당 아이디를 통해서 처리를 해야함
+//      ChattyApi.getApi().getPartnerProfileDetail(1)
+        ChattyApi.getApi().getMyPartnerProfile()
         .enqueue(new Callback<PartnerProfileDetailResponse>() {
           @Override
           public void onResponse(
@@ -40,21 +43,31 @@ public class PartnerAction {
     };
   }
 
-  public static boolean requestAddNewPartnerProfile(NewPartnerRequest newPartnerRequest, MultipartBody.Part file) {
-    final boolean[] isSuccess = {false};
-    ChattyApi.getApi().postNewPartner(newPartnerRequest, file)
-      .enqueue(new Callback<ChatResponse>() {
-        @Override
-        public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
-          isSuccess[0] = true;
-        }
+  public static ReduxJava.DispatcherMiddleware requestAddNewPartnerProfile(
+    RequestBody name,
+    RequestBody bio,
+    MultipartBody.Part file) {
+    return(dispatch) -> {
+      dispatch.run(Action.of(ActionType.REQUEST_ADD_FRIEND));
+      ChattyApi.getApi().postNewPartner(name, bio, file)
+        .enqueue(new Callback<ChatResponse>() {
+          @Override
+          public void onResponse(
+            Call<ChatResponse> call,
+            Response<ChatResponse> response
+          ) {
+            Log.e("통신 성공", "통신 성공!!!");
+            dispatch.run(Action.of(ActionType.REQUEST_ADD_FRIEND_SUCCESS)
+              .payloadAdd("addFriend",true));
+          }
 
-        @Override
-        public void onFailure(Call<ChatResponse> call, Throwable t) {
-
-        }
-      });
-    return isSuccess[0];
+          @Override
+          public void onFailure(Call<ChatResponse> call, Throwable t) {
+            Log.e("통신 실패", String.valueOf(t));
+            dispatch.run(Action.of(ActionType.REQUEST_ADD_FRIEND_ERROR));
+          }
+        });
+    };
   }
 
   private static PartnerProfileDetailResponse getDummyProfileDetail() {

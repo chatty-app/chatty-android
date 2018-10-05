@@ -18,6 +18,8 @@ import com.chatty.android.chattyClient.model.FriendItemEntry;
 import com.chatty.android.chattyClient.presenter.Contract;
 import com.chatty.android.chattyClient.presenter.friendsList.FriendsListPresenter;
 import com.chatty.android.chattyClient.presenter.friendsList.FriendsListRecyclerViewAdapter;
+import com.chatty.android.chattyClient.state.Store;
+import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.chatty.android.chattyClient.view.addFriend.AddFriendActivity;
 
 import java.util.List;
@@ -55,6 +57,12 @@ public class FriendsListActivity extends AppCompatActivity implements ExtendedVi
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Contract.connect(this, FriendsListPresenter.class);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    Store.dispatch(PartnerAction.requestGetFriendsList());
   }
 
   @Override

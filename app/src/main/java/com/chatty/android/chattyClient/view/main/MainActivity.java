@@ -23,6 +23,8 @@ import com.chatty.android.chattyClient.model.TimelineEntry;
 import com.chatty.android.chattyClient.presenter.Contract;
 import com.chatty.android.chattyClient.presenter.main.MainPresenter;
 import com.chatty.android.chattyClient.presenter.main.TimelineRecyclerViewAdapter;
+import com.chatty.android.chattyClient.state.Store;
+import com.chatty.android.chattyClient.state.action.DiaryAction;
 import com.chatty.android.chattyClient.view.app.ProfileAvatarImage;
 import com.chatty.android.chattyClient.view.calendar.CalendarActivity;
 import com.chatty.android.chattyClient.view.setting.SettingActivity;
@@ -74,6 +76,12 @@ public class MainActivity extends AppCompatActivity implements ExtendedView<Main
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Contract.connect(this, MainPresenter.class);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    Store.dispatch(DiaryAction.requestGetDiaries());
   }
 
   public void StartfloatingBtn() {

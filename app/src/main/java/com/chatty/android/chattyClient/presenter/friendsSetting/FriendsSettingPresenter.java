@@ -20,7 +20,7 @@ public class FriendsSettingPresenter
     }
 
     FriendsSettingActivityProps props = new FriendsSettingActivityProps();
-    props.friendDetail = Store.getState().diary.partnerProfileDetail;
+    props.friendDetail = Store.getState().friend.partnerProfileDetail;
     return props;
   }
 
@@ -28,7 +28,7 @@ public class FriendsSettingPresenter
     Store.printState(this.getClass().getSimpleName(), state);
 
     FriendsSettingActivityProps props = new FriendsSettingActivityProps();
-    props.friendDetail = state.diary.partnerProfileDetail;
+    props.friendDetail = state.friend.partnerProfileDetail;
 
     return props;
   }

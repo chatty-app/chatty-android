@@ -2,7 +2,6 @@ package com.chatty.android.chattyClient.presenter.friendsList;
 
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedPresenter;
 import com.chatty.android.chattyClient.model.State;
-import com.chatty.android.chattyClient.externalModules.ReduxJava.ReduxJavaAndroidConnector;
 import com.chatty.android.chattyClient.state.Store;
 import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.chatty.android.chattyClient.view.friendsList.FriendsListActivityProps;

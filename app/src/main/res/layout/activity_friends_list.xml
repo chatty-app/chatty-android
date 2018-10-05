@@ -33,6 +33,7 @@
     app:layout_constraintTop_toBottomOf="@id/textView_profile_now">
     <ImageView
       android:id="@+id/imageView_profile_now"
+      android:scaleType="centerCrop"
       android:src="@color/gray1"
       android:layout_width="@dimen/SIZE_40"
       android:layout_height="@dimen/SIZE_40"
@@ -43,7 +44,7 @@
       app:layout_constraintBottom_toBottomOf="parent"/>
     <TextView
       android:id="@+id/textView_profile_name_now"
-      android:layout_width="wrap_content"
+      android:layout_width="@dimen/match_constraint"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/size_8dp"
       android:text="Conan O'Brien"
@@ -53,13 +54,18 @@
       app:layout_constraintStart_toEndOf="@+id/imageView_profile_now"/>
     <TextView
       android:id="@+id/textView_profile_bio_now"
-      android:layout_width="wrap_content"
+      android:ellipsize="end"
+      android:layout_width="@dimen/match_constraint"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/size_8dp"
+      android:paddingEnd="@dimen/SIZE_8"
+      android:maxLines="1"
       android:text="I'm with COCO."
       android:textColor="@color/gray2"
       android:textSize="@dimen/text_size_12sp"
       app:layout_constraintBottom_toBottomOf="@+id/imageView_profile_now"
+      app:layout_constraintEnd_toStartOf="@id/textView_profile_date_now"
+      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toEndOf="@+id/imageView_profile_now" />
     <TextView
       android:id="@+id/textView_profile_date_now"
@@ -86,8 +92,9 @@
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerView_profile_list"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/match_constraint"
     android:layout_marginTop="@dimen/SIZE_12"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toBottomOf="@id/textView_profile_list"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>

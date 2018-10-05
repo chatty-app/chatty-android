@@ -27,5 +27,6 @@ public class State {
     public ArrayList<FriendItemEntry> friends = new ArrayList<>();
     public Partner partner = new Partner();
     public PartnerProfileDetailEntry partnerProfileDetail = new PartnerProfileDetailEntry();
+    public boolean isAddFriend;
   }
 }

@@ -133,6 +133,7 @@
     android:text="@string/SETTING_PROFILE_MAIN_EDIT_BUTTON"
     android:textAllCaps="false"
     android:textColor="@color/white5"
+    android:visibility="gone"
     android:layout_marginStart="@dimen/SIZE_20"
     android:layout_marginEnd="@dimen/SIZE_20"
     android:layout_marginBottom="@dimen/SIZE_20"

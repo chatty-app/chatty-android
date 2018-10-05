@@ -3,6 +3,7 @@ package com.chatty.android.chattyClient.view.addFriend;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,22 +22,30 @@ import com.chatty.android.chattyClient.App;
 import com.chatty.android.chattyClient.R;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.ExtendedView;
 import com.chatty.android.chattyClient.externalModules.AndroidExtended.Props;
+import com.chatty.android.chattyClient.model.request.NewPartnerRequest;
 import com.chatty.android.chattyClient.module.ImagePicker;
 import com.chatty.android.chattyClient.presenter.Contract;
 import com.chatty.android.chattyClient.presenter.addFriend.AddFriendPresenter;
+import com.chatty.android.chattyClient.state.Store;
+import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import gun0912.tedbottompicker.TedBottomPicker;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class AddFriendActivity extends AppCompatActivity implements ExtendedView<AddFriendActivityProps>, ImagePicker {
   private static String HEADER_TITLE = "Add Friend";
   private Uri imageUri;
   private boolean hasName = false;
+  private boolean hasProfile = false;
   private boolean isSubmitReady = false;
 
   @BindView(R.id.button_timeline_left)
@@ -57,6 +66,8 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   @BindView(R.id.editText_profile_bio)
   public EditText editTextProfileBio;
 
+  private AddFriendActivityProps props;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -68,24 +79,25 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
     this.setContentView(R.layout.activity_add_friend);
     ButterKnife.bind(this);
 
+    this.props = p;
     TextView textView = findViewById(R.id.textView_timeline_title);
     textView.setText(HEADER_TITLE);
 
     this.imageButtonBack.setOnClickListener(
-      p.handleClickImageButtonBack.apply(this::finish));
+      this.props.handleClickImageButtonBack.apply(this::finish));
 
     this.imageViewProfile.setOnClickListener(
-      p.handleClickImageViewProfile.apply(() -> {
+      this.props.handleClickImageViewProfile.apply(() -> {
         this.profileImageButtonAction();
       }));
 
     this.imageViewAddProfileButton.setOnClickListener(
-      p.handleClickImageViewProfile.apply(() -> {
+      this.props.handleClickImageViewProfile.apply(() -> {
         this.profileImageButtonAction();
       }));
 
     this.buttonAddProfile.setOnClickListener(
-      p.handleClickButtonAddProfile.apply(() -> {
+      this.props.handleClickButtonAddProfile.apply(() -> {
         if (isSubmitReady) {
           this.sendProfileAction();
         }
@@ -113,17 +125,44 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   @Override
-  public void update(AddFriendActivityProps addFriendActivityProps) {
-
+  public void update(AddFriendActivityProps props) {
+    if (props.isAddFriend) {
+      new Handler().postDelayed(new Runnable() {
+        @Override
+        public void run() {
+          finish();
+        }
+      }, 500);
+    }
   }
 
   private void sendProfileAction() {
-    Log.e("ddddddd", "dddddfdfdfd");
+    this.setFriendData();
+    this.saveUserLocalData();
+    finish();
+  }
+
+  private void setFriendData() {
+    this.props.friendName = editTextProfileName.getText().toString();
+    this.props.friendBio = editTextProfileBio.getText().toString();
+    this.props.friendImage = new File (imageUri.getPath());
+    RequestBody currentImage = RequestBody.create(MediaType.parse("multipart/*"), this.props.friendImage);
+    MultipartBody.Part requestImage = MultipartBody.Part.createFormData("profile_image", this.props.friendImage.getName(), currentImage);
+    RequestBody requestName = RequestBody.create(MediaType.parse("text/plain"), this.props.friendName);
+    RequestBody requestBio = RequestBody.create(MediaType.parse("text/plain"), this.props.friendBio + "");
+
+    Store.dispatch(PartnerAction.requestAddNewPartnerProfile(
+      requestName,
+      requestBio,
+      requestImage
+    ));
+  }
+
+  private void saveUserLocalData() {
     SharedPreferences userPreference = getSharedPreferences(App.USER_DATA, MODE_PRIVATE);
     SharedPreferences.Editor editor = userPreference.edit();
     editor.putBoolean(App.HAS_FRIEND, true);
     editor.commit();
-    finish();
   }
 
   private void profileImageButtonAction() {
@@ -170,6 +209,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   public void updateProfile(Uri uri) {
+    this.hasProfile = true;
     this.imageUri = uri;
     Glide.with(getApplicationContext())
       .load(this.imageUri)
@@ -178,8 +218,7 @@ public class AddFriendActivity extends AppCompatActivity implements ExtendedView
   }
 
   private void updateSubmitButton() {
-    boolean hasImage = TextUtils.isEmpty(String.valueOf(this.imageUri));
-    if (!hasImage && hasName) {
+    if (hasProfile && hasName) {
       isSubmitReady = true;
       buttonAddProfile.setBackgroundResource(R.color.main_purple);
     } else {

@@ -9,18 +9,26 @@ import com.chatty.android.chattyClient.model.State;
 import com.chatty.android.chattyClient.model.request.NewPartnerRequest;
 import com.chatty.android.chattyClient.externalModules.ReduxJava.ReduxJavaAndroidConnector;
 import com.chatty.android.chattyClient.state.Store;
+import com.chatty.android.chattyClient.state.action.PartnerAction;
 import com.chatty.android.chattyClient.view.addFriend.AddFriendActivity;
 import com.chatty.android.chattyClient.view.addFriend.AddFriendActivityProps;
 import com.chatty.android.chattyClient.view.addFriend.AddFriendActivityState;
 import com.chatty.android.chattyClient.view.friendsSetting.FriendsSettingActivity;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+
 public class AddFriendPresenter extends ExtendedPresenter<AddFriendActivityProps, AddFriendActivityState, State> {
+  private AddFriendActivityProps props;
+
   @Override
   public AddFriendActivityProps initiate() {
     AddFriendActivityProps props = new AddFriendActivityProps();
     props.handleClickImageButtonBack = this::handleClickImageButtonBack;
     props.handleClickImageViewProfile = this::handleClickImageViewProfile;
     props.handleClickButtonAddProfile = this::handleClickButtonAddProfile;
+    this.props = props;
     return props;
   }
 
@@ -29,7 +37,9 @@ public class AddFriendPresenter extends ExtendedPresenter<AddFriendActivityProps
   }
 
   public AddFriendActivityProps stateListener(State state) {
-    return null;
+    props.isAddFriend = state.friend.isAddFriend;
+
+    return props;
   }
 
   private View.OnClickListener handleClickImageButtonBack(Runnable r) {
@@ -37,7 +47,6 @@ public class AddFriendPresenter extends ExtendedPresenter<AddFriendActivityProps
   }
 
   private View.OnClickListener handleClickImageViewProfile(Runnable r) {
-    Log.v("동작", "동작완료");
     return (v) -> r.run();
   }
 

@@ -10,8 +10,10 @@ import com.chatty.android.chattyClient.model.response.DiaryResponse;
 import com.chatty.android.chattyClient.model.response.TimelineResponse;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -50,11 +52,16 @@ public interface ChattyApiDefinition {
     @Path("partner_id") int partner_id
   );
 
+  @GET("/partners/mypartner/")
+  Call<PartnerProfileDetailResponse> getMyPartnerProfile();
+
   @Multipart
-  @POST("/partners/partner")
+  @POST("/partners/partner/")
   Call<ChatResponse> postNewPartner(
-    @Body
-      NewPartnerRequest newPartnerRequest,
+    @Part("name")
+      RequestBody name,
+    @Part("bio")
+      RequestBody bio,
     @Part
       MultipartBody.Part profile_image
   );

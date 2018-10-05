@@ -5,8 +5,8 @@ public class PartnerProfileDetailResponse {
   public String profile_image;
   public String name;
   public String bio;
-  public int diaryCount;
-  public int daysTogether;
+  public int diary_count;
+  public int days_together;
   public String created_at;
 
   public PartnerProfileDetailResponse(
@@ -22,8 +22,8 @@ public class PartnerProfileDetailResponse {
     this.profile_image = profileImage;
     this.name = name;
     this.bio = bio;
-    this.diaryCount = diaryCount;
-    this.daysTogether = daysTogether;
+    this.diary_count = diaryCount;
+    this.days_together = daysTogether;
     this.created_at = createDate;
   }
 
@@ -60,19 +60,19 @@ public class PartnerProfileDetailResponse {
   }
 
   public int getDiaryCount() {
-    return diaryCount;
+    return diary_count;
   }
 
   public void setDiaryCount(int diaryCount) {
-    this.diaryCount = diaryCount;
+    this.diary_count = diaryCount;
   }
 
   public int getDaysTogether() {
-    return daysTogether;
+    return days_together;
   }
 
   public void setDaysTogether(int daysTogether) {
-    this.daysTogether = daysTogether;
+    this.days_together = daysTogether;
   }
 
   public String getCreateDate() {

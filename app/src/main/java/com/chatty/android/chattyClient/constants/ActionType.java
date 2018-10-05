@@ -1,6 +1,10 @@
 package com.chatty.android.chattyClient.constants;
 
 public class ActionType {
+  public final static String REQUEST_ADD_FRIEND = "REQUEST_ADD_FRIEND";
+  public final static String REQUEST_ADD_FRIEND_ERROR = "REQUEST_ADD_FRIEND_ERROR";
+  public final static String REQUEST_ADD_FRIEND_SUCCESS = "REQUEST_ADD_FRIEND_SUCCESS";
+
   public final static String REQUEST_APPEND_CHAT = "REQUEST_APPEND_CHAT";
   public final static String REQUEST_APPEND_CHAT_ERROR = "REQUEST_APPEND_CHAT_ERROR";
   public final static String REQUEST_APPEND_CHAT_SUCCESS = "REQUEST_APPEND_CHAT_SUCCESS";
