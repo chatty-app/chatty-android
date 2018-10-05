@@ -6,15 +6,7 @@ import java.util.List;
 
 public class TimelineResponse {
   public Partner partner;
-  public List<Diary> diaries;
-
-  public Partner getPartner() {
-    return partner;
-  }
-
-  public List<Diary> getDiaries() {
-    return diaries;
-  }
+  public List<Diary> complete_diaries;
 
   public class Partner {
     public Integer days_together;
@@ -23,7 +15,7 @@ public class TimelineResponse {
     public Integer partner_id;
     public String profile_image;
   }
-
+  
   public class Diary {
     public Integer diary_id;
     public Date created_at;
