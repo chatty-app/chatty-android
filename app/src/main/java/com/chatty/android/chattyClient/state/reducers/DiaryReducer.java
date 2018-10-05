@@ -21,7 +21,7 @@ public class DiaryReducer implements Reducer<State.Diary> {
       case ActionType.REQUEST_GET_DIARIES_SUCCESS:
         TimelineResponse timeline = (TimelineResponse) action.getPayload().get("timeline");
         ArrayList<TimelineEntry> timelineEntries = timeline
-          .diaries
+          .complete_diaries
           .stream()
           .map((_diary) -> {
             TimelineEntry entry = new TimelineEntry();
